@@ -1,0 +1,11 @@
+<h1> songs you have ordered now </h1>
+<br/>
+<img src="{{song.pic}}" width="200">
+{{subTitle}} by {{song.artist}} at  {{titleCount}}
+
+<h2>Comments:</h2>
+<ul>
+{{#each comment in newComments}}
+<li>{{comment.title}}</li>
+{{/each}}
+</ul>
