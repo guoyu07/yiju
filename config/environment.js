@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'my-app',
+    modulePrefix: 'Yiju',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
