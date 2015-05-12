@@ -3,14 +3,13 @@
 </audio>
 <h2> this is my song list </h2>
 <ul>
-{{#each item in upperSongs}}
+{{#each item in songs}}
   <li>
-  {{#link-to 'song' item}} {{item.upperTitle}} by {{item.artist}} {{/link-to}}
-  {{#if item.longSong}} this is a very long song {{/if}} 
+  {{#link-to 'song' item}} {{item.title}} by {{item.artist}} {{/link-to}}
+  {{#if item.longSong}} this is a very long song {{/if}}
   <button {{action "deleteSong" item  on="click"}}> Delete </button>
   <button {{action "loadSong" item  on="click"}}> Listen </button>
   </li>
 {{/each}}
 </ul>
 total songs number : {{totalSongs}}
-

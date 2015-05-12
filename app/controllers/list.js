@@ -1,8 +1,6 @@
 import Ember from 'ember';
 
-
 export default Ember.Controller.extend({
-
 	actions: {
 		addNewSong: function(value) {
 			var postUrl =  "http://127.0.0.1:5000/add/" + value;
@@ -18,22 +16,8 @@ export default Ember.Controller.extend({
 			var _id = song._id;
 			var deleteUrl = "http://127.0.0.1:5000/delete/" + _id;
 			Ember.$.getJSON(deleteUrl).then(function() {
-				songs.removeAt(idx);			
+				songs.removeAt(idx);
 			});
-		},
-		loadSong: function(song) {
-
 		}
-	},
-
-	lowerSongs: function() {
-		var songs = this.get('songs');
-		var arr = songs.filter(function(song) {
-			if (song.title.length > 14) {
-				song.longSong = true;
-			}
-			return song;
-		});
-		return arr;
-	}.property('songs.@each')
+	}
 });
