@@ -1,9 +1,10 @@
 import Ember from 'ember';
+import config from 'Yiju/config/environment';
 
 export default Ember.Controller.extend({
 	actions: {
 		addNewSong: function(value) {
-			var postUrl =  "http://127.0.0.1:5000/add/" + value;
+			var postUrl =  config.apiUrls.add + value;
 			var songs = this.get('songs');
 			Ember.$.getJSON(postUrl).then(function(data) {
 				this.set('id', '');
@@ -14,7 +15,7 @@ export default Ember.Controller.extend({
 			var songs = this.get('songs');
 			var idx = songs.indexOf(song);
 			var _id = song._id;
-			var deleteUrl = "http://127.0.0.1:5000/delete/" + _id;
+			var deleteUrl = config.apiUrls.delete + _id;
 			Ember.$.getJSON(deleteUrl).then(function() {
 				songs.removeAt(idx);
 			});

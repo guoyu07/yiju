@@ -1,4 +1,6 @@
 import Ember from 'ember';
+import config from 'Yiju/config/environment';
+
 export default Ember.Route.extend({
 	urlToObj: function(str) {
 		var obj = {}, strPrams;
@@ -17,13 +19,18 @@ export default Ember.Route.extend({
         var url = this.get('router.url');
         if (url.indexOf('code') !== -1) {
         	var obj = this.urlToObj(url);
-        	return Ember.$.getJSON('http://127.0.0.1:5000/connect/' + obj.code);
+        	return Ember.$.getJSON(config.apiUrls.connect + obj.code);
         } else if (url.indexOf('error') !== -1) {
         	this.transitionTo('list');
 
         } else {
         	this.transitionTo('list');
         }
+	},
+	afterModel: function() {
+		if (model.exsitUser) {
+			this.transitionTo('list');
+		} 
 	},
 	actions: {
 		signup: function(user) {
@@ -34,7 +41,7 @@ export default Ember.Route.extend({
 			};
 			Ember.$.ajax({
 				type: 'POST',
-				url: 'http://127.0.0.1:5000/adduser/',
+				url: config.apiUrls.adduser,
 				data: data
 			}).then(function(data) {
 				console.log(data);
@@ -42,6 +49,6 @@ export default Ember.Route.extend({
 		}
 	},
 	setupController: function(controller, model) {
-		controller.set('user', model);
+		controller.set('user', model.info);
 	}
 });
