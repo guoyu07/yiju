@@ -27,10 +27,13 @@ export default Ember.Route.extend({
         	this.transitionTo('list');
         }
 	},
-	afterModel: function() {
+	afterModel: function(model) {
+		console.log(this.get('session'));
 		if (model.exsitUser) {
+			this.get('session').set('username', 'viking');
+			//this.get('session').authenticate('authenticator:yiju', {username: 'viking'});
 			this.transitionTo('list');
-		} 
+		}
 	},
 	actions: {
 		signup: function(user) {

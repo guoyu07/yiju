@@ -14,6 +14,7 @@ module.exports = function(environment) {
         connect: 'connect/',
         user: 'users',
         adduser: 'adduser',
+        login: 'login'
 
     },
     EmberENV: {

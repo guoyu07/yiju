@@ -1,0 +1,14 @@
+<h2>Login to Yiju</h2>
+
+{{input value=name placeholder='enter your username'}} <br/>
+{{input value=password type='password' placeholder='enter your password'}}<br/>
+
+<button {{action "login" name password}}> Login </button> <br/>
+
+{{#if isLogin}}
+  {{#if loginStatus}}
+  Login success, go to index page in 2 secs
+  {{else}}
+  Login failed
+  {{/if}}
+{{/if}}

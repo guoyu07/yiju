@@ -1,11 +1,13 @@
 <h2 id="title">Welcome to Ember.js</h2>
-
-{{#if session.isAuthenticated}}
-Hi,Viking
+{{#if loginSession}}
+Hi,{{username}}
 {{else}}
 <a href="https://www.douban.com/service/auth2/auth?client_id=063b27283fc657df12b17578bf53079d&redirect_uri=http://localhost:4200/connect&response_type=code">
   login with douban
 </a>
+or
+{{#link-to 'login'}} Login {{/link-to}}
+
 {{/if}}
 
 {{outlet}}

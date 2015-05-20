@@ -12,8 +12,16 @@ export default Ember.Route.extend({
 			//users: Ember.$.getJSON(usersUrl)
 		});
 	},
-	setupController: function(controller, models) {
-		controller.set('songs', models.songs);
+
+	setupController: function(controller, model) {
+		controller.set('songs', model.songs);
+		var userSession = this.get('session').get('username');
+		if (userSession) {
+			controller.set('loginSession', true);
+			controller.set('username', userSession);
+		} else {
+			controller.set('loginSession', false);
+		}
 		//controller.set('users', models.users);
 	}
 });

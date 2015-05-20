@@ -9,4 +9,5 @@ export default Router.map(function() {
 	this.route('list',  { path: '/' });
 	this.route('song', {path: '/song/:sid'});
 	this.route('connect');
+  this.route('login');
 });
