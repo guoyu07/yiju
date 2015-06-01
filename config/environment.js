@@ -29,6 +29,13 @@ module.exports = function(environment) {
       // when it is created
     }
   };
+  ENV['simple-auth'] = {
+    authorizer: 'authorizer:custom',
+    //store: 'simple-auth-session-store:cookie', // optional
+    crossOriginWhitelist: ['http://localhost'],
+    routeAfterAuthentication: 'list'
+  };
+
   ENV.contentSecurityPolicy = {
     'default-src': "'none'",
     'script-src': "'self' 'unsafe-eval'",

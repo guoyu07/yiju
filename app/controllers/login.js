@@ -1,16 +1,17 @@
 import Ember from 'ember';
 import config from 'Yiju/config/environment';
+import LoginControllerMixin from 'simple-auth/mixins/login-controller-mixin';
+export default Ember.Controller.extend(LoginControllerMixin, {
+  authenticator: 'authenticator:custom'
 
-export default Ember.Controller.extend({
-  isLogin: null,
-  loginStatus: null,
-  actions: {
+  /*actions: {
     login: function(username, password) {
+
       var data = {
         username: username,
         password: password
       }
-      var self = this;
+      /*var self = this;
       Ember.$.ajax({
         type: 'POST',
         url: config.apiUrls.login,
@@ -28,6 +29,8 @@ export default Ember.Controller.extend({
           self.set('loginStatus', false);
         }
       });
+      var session  = this.get('session');
+      session.authenticate('authenticator:custom', data);
     }
-  }
+  }*/
 });

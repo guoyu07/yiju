@@ -15,13 +15,5 @@ export default Ember.Route.extend({
 
 	setupController: function(controller, model) {
 		controller.set('songs', model.songs);
-		var userSession = this.get('session').get('username');
-		if (userSession) {
-			controller.set('loginSession', true);
-			controller.set('username', userSession);
-		} else {
-			controller.set('loginSession', false);
-		}
-		//controller.set('users', models.users);
 	}
 });

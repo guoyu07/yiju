@@ -16,16 +16,16 @@ export default Ember.Route.extend({
 		return obj;
 	},
 	model: function() {
-        var url = this.get('router.url');
-        if (url.indexOf('code') !== -1) {
-        	var obj = this.urlToObj(url);
-        	return Ember.$.getJSON(config.apiUrls.connect + obj.code);
-        } else if (url.indexOf('error') !== -1) {
-        	this.transitionTo('list');
+	  var url = this.get('router.url');
+	  if (url.indexOf('code') !== -1) {
+	  	var obj = this.urlToObj(url);
+	  	return Ember.$.getJSON(config.apiUrls.connect + obj.code);
+	  } else if (url.indexOf('error') !== -1) {
+	  	this.transitionTo('list');
 
-        } else {
-        	this.transitionTo('list');
-        }
+	  } else {
+	  	this.transitionTo('list');
+	  }
 	},
 	afterModel: function(model) {
 		console.log(this.get('session'));
