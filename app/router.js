@@ -10,4 +10,5 @@ export default Router.map(function() {
 	this.route('song', {path: '/song/:sid'});
 	this.route('connect');
   this.route('login');
+  this.route('signup');
 });

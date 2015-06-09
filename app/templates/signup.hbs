@@ -1,0 +1,12 @@
+<h2>Signup to Yiju</h2>
+<form {{action 'signup' on='submit'}}>
+{{input value=username placeholder='enter your username'}} <br/>
+{{input value=password type='password' placeholder='enter your password'}}<br/>
+{{input value=repassword type='password' placeholder='enter your password again'}}<br/>
+{{input value=avatar type='text' placeholder='enter your avatar address'}}<br/>
+<button type="submit">Signup</button>
+</form>
+
+{{#if message}}
+  {{message}}
+{{/if}}

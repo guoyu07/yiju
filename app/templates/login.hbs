@@ -6,10 +6,6 @@
 </form>
 
 
-{{#if isLogin}}
-  {{#if loginStatus}}
-  Login success, go to index page in 2 secs
-  {{else}}
-  Login failed
-  {{/if}}
+{{#if errorMessage}}
+  {{errorMessage}}
 {{/if}}

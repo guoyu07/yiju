@@ -15,7 +15,7 @@ export default Base.extend({
       }
     });
   },
-
+  //the login goes here
   authenticate: function(options) {
     return new Ember.RSVP.Promise(function(resolve, reject) {
       Ember.$.ajax({
@@ -26,10 +26,18 @@ export default Base.extend({
           password: options.password
         })
       }).then(function(response) {
-        console.log(response);
-        Ember.run(function() {
-          resolve(response);
-        });
+        // check the login status to check the status
+        if (response.status === "success") {
+          //pass the response in resolve callback
+          Ember.run(function() {
+            resolve(response);
+          });
+        } else {
+          //login failed, pass the response in reject callback
+          Ember.run(function() {
+            reject(response);
+          });
+        }
       }, function(xhr, status, error) {
         Ember.run(function() {
           reject(xhr.responseJSON || xhr.responseText);
