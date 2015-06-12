@@ -47,8 +47,6 @@ export default Base.extend({
   },
 
   invalidate: function() {
-    console.log('invalidate...');
-
     return new Ember.RSVP.Promise(function(resolve, reject) {
       Ember.$.ajax({
         type: "POST",

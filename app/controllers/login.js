@@ -10,6 +10,7 @@ export default Ember.Controller.extend(LoginControllerMixin, {
       var credentials = this.getProperties('identification', 'password');
       this.get('session').authenticate('authenticator:custom', credentials).then(
       function() {
+        console.log(_this.get('session.secure.data'));
         var username = _this.get('session.secure.data.name');
         _this.get('session').set('username', username);
       }, function(message) {

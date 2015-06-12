@@ -3,13 +3,26 @@ import config from 'Yiju/config/environment';
 
 export default Ember.Controller.extend({
 	actions: {
-		addNewSong: function(value) {
-			var postUrl =  config.apiUrls.add + value;
+		addNewSong: function(value, userid) {
+			var postUrl =  config.apiUrls.add;
+			var postData = {
+				songId : value,
+				userId : userid
+			};
+			console.log(postData);
 			var songs = this.get('songs');
-			Ember.$.getJSON(postUrl).then(function(data) {
+			Ember.$.ajax({
+				url: postUrl,
+				method: 'POST',
+				data: JSON.stringify(postData)
+			}).then(function(data) {
 				this.set('id', '');
 				songs.pushObject(data);
 			}.bind(this));
+			/*Ember.$.getJSON(postUrl).then(function(data) {
+				this.set('id', '');
+				songs.pushObject(data);
+			}.bind(this));*/
 		},
 		deleteSong: function(song) {
 			var songs = this.get('songs');

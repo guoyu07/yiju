@@ -6,10 +6,12 @@ export default Ember.Component.extend({
 	//set active index for songs
 	setSongActive: function(index) {
 		var songs = this.get('songs');
-		songs.forEach(function(item) {
-			item.active = false;
-		});
-		songs[index].active = true;
+		if (songs.length > 0) {
+			songs.forEach(function(item) {
+				item.active = false;
+			});
+			songs[index].active = true;
+		}
 	},
 
 	//get current active index
