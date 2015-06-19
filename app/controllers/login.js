@@ -13,6 +13,7 @@ export default Ember.Controller.extend(LoginControllerMixin, {
         console.log(_this.get('session.secure.data'));
         var username = _this.get('session.secure.data.name');
         _this.get('session').set('username', username);
+        //debugger;
       }, function(message) {
         // but the reject callback works fine, the message is the right one
         _this.set('errorMessage', message.msg);

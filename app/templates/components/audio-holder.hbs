@@ -1,15 +1,22 @@
 <h2>this is the player</h2>
 <audio preload="auto">
 </audio>
-<h2> this is my song list </h2>
+<h2> this is public song list </h2>
 <ul>
 {{#each item in songs}}
   <li>
   {{#link-to 'song' item}} {{item.title}} by {{item.artist}} {{/link-to}}
   {{#if item.longSong}} this is a very long song {{/if}}
   created by {{item._creator.name}}
-  <button {{action "deleteSong" item  on="click"}}> Delete </button>
   <button {{action "loadSong" item  on="click"}}> Listen </button>
+  <button {{action "deleteSong" item  on="click"}}> Delete </button>
+  {{#if session.isAuthenticated}}
+    {{#if item.isStared}}
+    <button {{action "favSong" item._id session.secure.data._id }}>  Unstar </button>
+    {{else}}
+    <button {{action "favSong" item._id session.secure.data._id }}>  Star </button>
+    {{/if}}
+  {{/if}}
   </li>
 {{/each}}
 </ul>

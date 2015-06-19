@@ -1,6 +1,7 @@
-{{audio-holder songs=songs action="deleteSong"}}
-
+{{audio-holder songs=songList deleteSong="deleteSong" favSong="favSong"}}
+{{#if session.isAuthenticated}}
 Hi,{{session.username}}
 <h2>Add new songs</h2>
 {{input type='text' value=id}}
 <button {{action "addNewSong" id session.secure.data._id on="click"}}>Add</button>
+{{/if}}

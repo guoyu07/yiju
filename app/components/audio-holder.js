@@ -2,7 +2,7 @@ import Ember from 'ember';
 var aj = audiojs;
 var as = null, audio = null;
 export default Ember.Component.extend({
-
+	
 	//set active index for songs
 	setSongActive: function(index) {
 		var songs = this.get('songs');
@@ -86,7 +86,10 @@ export default Ember.Component.extend({
 
 	actions: {
 		deleteSong: function(song) {
-			this.sendAction('action', song);
+			this.sendAction('deleteSong', song);
+		},
+		favSong: function(songid, userid) {
+			this.sendAction('favSong', songid, userid);
 		},
 		loadSong: function(song) {
 			var url = song.url;
