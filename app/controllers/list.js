@@ -54,19 +54,21 @@ export default Ember.Controller.extend({
 				songs.removeAt(idx);
 			});
 		},
-		favSong: function(songid, userid) {
+		favSong: function(song, userid) {
 			var postUrl = config.apiUrls.fav;
+			var songid = song._id;
+			var faved = song.isStared;
 			var postData = {
 				songId: songid,
 				userId: userid,
-				faved: true
+				faved: !faved
 			};
 			Ember.$.ajax({
 				url: postUrl,
 				method: 'POST',
 				data: JSON.stringify(postData)
 			}).then(function(data) {
-				console.log(data);
+				Ember.set(song, 'isStared', !faved);
 			});
 		}
 	}

@@ -12,9 +12,9 @@
   <button {{action "deleteSong" item  on="click"}}> Delete </button>
   {{#if session.isAuthenticated}}
     {{#if item.isStared}}
-    <button {{action "favSong" item._id session.secure.data._id }}>  Unstar </button>
+    <button {{action "favSong" item session.secure.data._id }}>  Unstar </button>
     {{else}}
-    <button {{action "favSong" item._id session.secure.data._id }}>  Star </button>
+    <button {{action "favSong" item session.secure.data._id }}>  Star </button>
     {{/if}}
   {{/if}}
   </li>
