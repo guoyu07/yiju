@@ -1,9 +1,11 @@
 <h2>this is the player</h2>
 <audio preload="auto">
 </audio>
-<h2> this is public song list </h2>
 <ul>
 {{#each item in songs}}
+  {{#if item.firstSong}}
+  <h2>{{item.message}}</h2>
+  {{/if}}
   <li>
   {{#link-to 'song' item}} {{item.title}} by {{item.artist}} {{/link-to}}
   {{#if item.longSong}} this is a very long song {{/if}}

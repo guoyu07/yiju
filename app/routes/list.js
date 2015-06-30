@@ -8,7 +8,7 @@ export default Ember.Route.extend({
 		var listUrl = apis.list;
 		var usersUrl = apis.users;
 		return Ember.RSVP.hash({
-			songs: Ember.$.getJSON(listUrl),
+			songs: Ember.$.getJSON(listUrl)
 			//users: Ember.$.getJSON(usersUrl)
 		});
 	},

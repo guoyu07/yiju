@@ -8,6 +8,7 @@ var Router = Ember.Router.extend({
 export default Router.map(function() {
   this.route('list',  { path: '/' });
 	this.route('song', {path: '/song/:sid'});
+  this.route('user', {path: '/user/:username'});
 	this.route('connect');
   this.route('login');
   this.route('signup');

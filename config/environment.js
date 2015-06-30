@@ -13,7 +13,7 @@ module.exports = function(environment) {
         fav: 'fav',
         delete: 'delete/',
         connect: 'connect/',
-        user: 'users',
+        user: 'user/',
         adduser: 'adduser',
         login: 'login',
         check: 'checkuser/'

@@ -17,5 +17,6 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 app.import('bower_components/audiojs/audiojs/audio.js');
+app.import('bower_components/blueimp-md5/js/md5.js');
 
 module.exports = app.toTree();
