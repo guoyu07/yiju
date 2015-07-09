@@ -1,7 +1,25 @@
 import Ember from 'ember';
 import config from 'Yiju/config/environment';
+import EmberValidations from 'ember-validations';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(EmberValidations, {
+  validations: {
+    username: {
+      presence: true
+    },
+    password: {
+      presence: true,
+      length: { minimum: 6 }
+    },
+    repassword: {
+      presence: true,
+      length: { minimum: 6 }
+    },
+    avatar: {
+      presence: true,
+      format: {with: /.+@.+\..{2,4}/, message: 'must be a email address'}
+    }
+  },
   message: '',
   resetInput: function() {
     this.set('username', '');
@@ -41,21 +59,23 @@ export default Ember.Controller.extend({
   },
   actions: {
     signup: function() {
-      var password = this.get('password');
-      var repass = this.get('repassword');
-      if (password !== repass) {
-        this.set('message', 'two passwords are not the same');
-      }
-      var username = this.username;
-      var data = {
-        name: username,
-        password: this.password,
-        avatar: this.avatar
-      };
-      var self = this;
+      if (this.get('isValid')){
+        var password = this.get('password');
+        var repass = this.get('repassword');
+        if (password !== repass) {
+          this.set('message', 'two passwords are not the same');
+        }
+        var username = this.username;
+        var data = {
+          name: username,
+          password: this.password,
+          avatar: this.avatar
+        };
+        var self = this;
 
-      this.checkUser(username, data, self)
-          .then(this.signupUser);
+        this.checkUser(username, data, self)
+            .then(this.signupUser);
+      }
     }
   }
 });

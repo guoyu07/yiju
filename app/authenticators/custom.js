@@ -6,11 +6,12 @@ var apis = config.apiUrls;
 
 export default Base.extend({
   restore: function(data) {
+    //restore the session here
+    console.log(data);
     return new Ember.RSVP.Promise(function (resolve, reject) {
-      if (!Ember.isEmpty(data.session_name)) {
+      if (!Ember.isEmpty(data.data.name)) {
         resolve(data);
-      }
-      else {
+      } else {
         reject();
       }
     });
@@ -45,8 +46,9 @@ export default Base.extend({
       });
     });
   },
-
+  //logout stuff here
   invalidate: function() {
+
     return new Ember.RSVP.Promise(function(resolve, reject) {
       Ember.$.ajax({
         type: "POST",

@@ -1,7 +1,14 @@
 <h2>Login to Yiju</h2>
 <form {{action 'authenticate' on='submit'}}>
-{{input value=identification placeholder='enter your username'}} <br/>
-{{input value=password type='password' placeholder='enter your password'}}<br/>
+{{validate-input value=identification
+                 type='text'
+                 placeholder='enter your username'
+                 errors=errors.identification}}
+{{validate-input value=password
+                 type='password'
+                 placeholder='enter your password'
+                 errors=errors.password}}
+
 <button type="submit">Login</button>
 </form>
 

@@ -1,9 +1,22 @@
 <h2>Signup to Yiju</h2>
 <form {{action 'signup' on='submit'}}>
-{{input value=username placeholder='enter your username'}} <br/>
-{{input value=password type='password' placeholder='enter your password'}}<br/>
-{{input value=repassword type='password' placeholder='enter your password again'}}<br/>
-{{input value=avatar type='text' placeholder='enter your avatar address'}}<br/>
+{{validate-input value=username
+                 type='text'
+                 placeholder='enter your username'
+                 errors=errors.username}}
+{{validate-input value=password
+                 type='password'
+                 placeholder='enter your password'
+                 errors=errors.password}}
+{{validate-input value=repassword
+                type='password'
+                placeholder='enter your username'
+                errors=errors.repassword}}
+{{validate-input value=avatar
+                type='text'
+                placeholder='enter your avatar address'
+                errors=errors.avatar}}
+
 <button type="submit">Signup</button>
 </form>
 
