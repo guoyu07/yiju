@@ -2,6 +2,14 @@
 
 This README outlines the details of collaborating on this Ember application.
 A short introduction of this app could easily go here.
+## TODO
+* styling
+* user level
+* post song desc using markdown
+* lyric fetching and format (http://lyrics.wikia.com/api.php?artist=muse&song=dead_inside&fmt=json)
+* album pic resizing and save to local (params=130y130)
+* detail page share using wechat https://github.com/soldair/node-qrcode
+* detail page commit using third party widget (youyan)
 
 ## Prerequisites
 
