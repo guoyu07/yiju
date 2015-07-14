@@ -7,7 +7,7 @@
   <h2>{{item.message}}</h2>
   {{/if}}
   <li>
-  {{#link-to 'song' item}} {{item.title}} by {{item.artist}} {{/link-to}}
+  {{#link-to 'song' item.sid}} {{item.title}} by {{item.artist}} {{/link-to}}
   {{#if item.longSong}} this is a very long song {{/if}}
   created by {{item._creator.name}}
   <button {{action "loadSong" item  on="click"}}> Listen </button>
