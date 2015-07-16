@@ -1,0 +1,18 @@
+@mixin subtle($color) {
+  display:            inline-block;
+  line-height:        $line-height;
+  font-size:          $font-size;
+  padding:            $p ($p * 2);
+  border-radius:      $font-size / 7;
+  outline:            none;
+  border:             none;
+  background:         $color;
+  color:              white;
+  margin:             0;
+  cursor:             pointer;
+  text-decoration:    none;
+  @include transition(all 0.2s ease-in);
+  &:hover {
+    background: lighten($color, 4%);
+  }
+}
