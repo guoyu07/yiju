@@ -13,6 +13,7 @@ export default Ember.Controller.extend(LoginControllerMixin, EmberValidations,{
       length: { minimum: 6 }
     }
   },
+  alt: false,
   //authenticator: 'authenticator:custom',
   actions: {
     // display an error when authentication fails

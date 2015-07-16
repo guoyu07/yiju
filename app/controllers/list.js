@@ -2,6 +2,7 @@ import Ember from 'ember';
 import config from 'Yiju/config/environment';
 
 export default Ember.Controller.extend({
+	alt: false,
 	songList: function() {
 		var login = this.get('session').get('isAuthenticated');
 		var songs = this.get('songs');

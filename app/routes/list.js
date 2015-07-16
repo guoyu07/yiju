@@ -15,5 +15,14 @@ export default Ember.Route.extend({
 
 	setupController: function(controller, model) {
 		controller.set('songs', model.songs);
+	},
+
+	rederTemplate: function() {
+		this._super();
+		this.render('list', {
+			outlet: 'main',
+			into: 'application'
+		});
+
 	}
 });

@@ -1,0 +1,20 @@
+<header>
+  <section id="header-inner">
+    <div class='unit'>
+      <h2 id="title">一句</h2>
+      {{#if session.isAuthenticated}}
+      {{#link-to 'user' session.username}}Hi,{{session.username}}  {{/link-to}}<button {{ action 'invalidateSession' }}>Logout</button>
+      {{else}}
+      <!--<a href="https://www.douban.com/service/auth2/auth?client_id=063b27283fc657df12b17578bf53079d&redirect_uri=http://localhost:4200/connect&response_type=code">
+        login with douban
+      </a>
+      or-->
+      {{#link-to 'login' class='login'}} Login {{/link-to}}
+      or
+      {{#link-to 'signup' class='signup'}} Signup {{/link-to}}
+      {{/if}}
+    </div>
+  </section>
+</header>
+
+{{outlet}}
