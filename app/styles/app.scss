@@ -48,23 +48,9 @@ body {
     @include outer-container;
   }
   .login-form {
-    @include span-columns(4);
-    @include shift(4);
-    .input-holder {
-      position: relative;
-    }
-    input {
-      @include larger-input;
-    }
-    .error {
-      position: absolute;
-      top: 3em;
-      left: 12px;
-      @include error-text;
-    }
-    button {
-      @include larger-btn;
-      margin-top: 1em;
-    }
+    @include form-style(44px);
+  }
+  .create-form {
+    @include form-style(35px);
   }
 }

@@ -17,27 +17,49 @@
     background: lighten($color, 4%);
   }
 }
-@mixin larger-btn {
+@mixin larger-btn($height) {
   @include subtle($newgreen);
   width: 100%;
-  height: 44px;
-  line-height: 44px;
+  height: $height;
+  line-height: $height;
 }
 @mixin error-text {
   color: $red;
 }
-@mixin larger-input {
-  height: 44px;
-  line-height: 44px;
+@mixin larger-input($height) {
+  height: $height;
+  line-height: $height;
   width: 100%;
   padding: 4px 12px;
   box-sizing: border-box;
   border-radius: $font-size / 4;
   outline: none;
   border: 1px solid #efefef;
-  margin-bottom: 2em;
+  margin-bottom: $height/2 + 2px;
   @include transition(all 0.2s ease-in);
   &:hover {
     background: #efefef;
   }
+}
+
+@mixin form-style($height) {
+  @include span-columns(4);
+  @include shift(4);
+  .input-holder {
+    position: relative;
+  }
+  input {
+    @include larger-input($height);
+  }
+  .error {
+    position: absolute;
+    top: $height + 2px;
+    left: 12px;
+    @include error-text;
+  }
+  button {
+    @include larger-btn($height);
+    margin-top: 1em;
+  }
+
 }

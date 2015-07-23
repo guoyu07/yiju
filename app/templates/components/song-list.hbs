@@ -1,0 +1,9 @@
+<ul class="songlist">
+  {{#if isNotEmpty}}
+  {{#each list}}
+    <li>{{this.artist}} --- {{this.song}}</li>
+  {{/each}}
+  {{else}}
+    <h3>No song added yet</h3>
+  {{/if}}
+</ul>

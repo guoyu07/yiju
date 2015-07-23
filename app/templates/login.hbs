@@ -1,22 +1,27 @@
-<div class="login-form">
-  <form {{action 'authenticate' on='submit'}}>
-  {{validate-input value=identification
-                   type='text'
-                   class='input-holder'
-                   placeholder='enter your username'
-                   errors=errors.identification}}
-  {{validate-input value=password
-                   type='password'
-                   class='input-holder'
-                   placeholder='enter your password'
-                   errors=errors.password}}
+<header class="alt-header">
+  <h2> 登陆 </h2>
+</header>
+<section id="container">
+  <div class="login-form">
+    <form {{action 'authenticate' on='submit'}}>
+    {{validate-input value=identification
+                     type='text'
+                     class='input-holder'
+                     placeholder='enter your username'
+                     errors=errors.identification}}
+    {{validate-input value=password
+                     type='password'
+                     class='input-holder'
+                     placeholder='enter your password'
+                     errors=errors.password}}
 
-  <button type="submit">Login</button>
-  </form>
+    <button type="submit">Login</button>
+    </form>
 
 
-  {{#if errorMessage}}
-    {{errorMessage}}
-  {{/if}}
+    {{#if errorMessage}}
+      {{errorMessage}}
+    {{/if}}
 
-</div>
+  </div>
+</section>

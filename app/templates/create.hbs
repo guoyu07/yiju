@@ -1,0 +1,27 @@
+<header class="alt-header">
+  <h2> 创建新的专辑 </h2>
+</header>
+<section id="container">
+  <div class="create-form">
+    <form>
+      {{validate-input value=title
+                       type='text'
+                       class='input-holder'
+                       placeholder='enter your collection name'
+                       errors=errors.title}}
+     {{validate-input value=desc
+                      type='text'
+                      class='input-holder'
+                      placeholder='enter your collection desc'
+                      errors=errors.desc}}
+    {{validate-input value=songid
+                     type='text'
+                     class='input-holder'
+                     placeholder='enter your the song id'
+                     errors=errors.songid}}
+    <button type="submit" {{action 'addSong'}}>Add Song</button>
+    {{song-list list = songs}}
+    </form>
+
+  </div>
+</section>
