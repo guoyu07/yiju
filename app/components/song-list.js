@@ -9,5 +9,11 @@ export default Ember.Component.extend({
       return true;
     }
   }.property('list.@each'),
-
+  actions: {
+    delete: function(song) {
+      var songs = this.get('list');
+      var idx = songs.indexOf(song);
+      songs.removeAt(idx);
+    }
+  }
 })

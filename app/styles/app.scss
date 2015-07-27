@@ -48,9 +48,12 @@ body {
     @include outer-container;
   }
   .login-form {
-    @include form-style(44px);
+    @include form-style(44px, 4);
   }
   .create-form {
-    @include form-style(35px);
+    @include form-style(35px, 6);
+  }
+  .songlist {
+    @include song-list;
   }
 }

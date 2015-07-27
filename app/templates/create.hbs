@@ -14,14 +14,23 @@
                       class='input-holder'
                       placeholder='enter your collection desc'
                       errors=errors.desc}}
+    <div class="mutil-holder">
     {{validate-input value=songid
                      type='text'
                      class='input-holder'
                      placeholder='enter your the song id'
                      errors=errors.songid}}
-    <button type="submit" {{action 'addSong'}}>Add Song</button>
+      <button type="submit" {{action 'addSong'}} {{bind-attr class="loading:loading:normal"}}>
+        {{#if loading}}
+        <span class="spinner"></span>
+        {{else}}
+        Add Song
+        {{/if}}
+      </button>
+    </div>
     {{song-list list = songs}}
     </form>
-
+    <button type="submit" {{action 'createAlbum' session.secure.data._id}}>Create Album
+    </button>
   </div>
 </section>
