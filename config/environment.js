@@ -9,7 +9,7 @@ module.exports = function(environment) {
     apiUrls: {
         list: 'list',
         song: 'song/',
-        add: 'add',
+        add: 'songs',
         create: 'create',
         fav: 'fav',
         delete: 'delete/',

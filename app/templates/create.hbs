@@ -14,6 +14,8 @@
                       class='input-holder'
                       placeholder='enter your collection desc'
                       errors=errors.desc}}
+
+    {{file-uploader}}
     <div class="mutil-holder">
     {{validate-input value=songid
                      type='text'
@@ -28,7 +30,7 @@
         {{/if}}
       </button>
     </div>
-    {{song-list list = songs}}
+    {{song-list list = songs ids = songIds}}
     </form>
     <button type="submit" {{action 'createAlbum' session.secure.data._id}}>Create Album
     </button>

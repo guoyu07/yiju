@@ -5,11 +5,12 @@
       <img src="{{this.pic}}?param=60y60" alt="{{this.title}}">
        <div class="info">{{this.title}} by {{this.artist}}</div>
        <div class="oprate">
-         {{#if this.noexsit}}
-         <span class="noexsit extend">歌曲未存在</span>
-         {{else}}
+         {{#if this.exsit}}
          <span class="exsit extend">歌曲已存在</span>
-         {{/if}}<span class="delete"{{action 'delete' this}}>删除</span>
+         {{else}}
+         <span class="noexsit extend">歌曲已新建</span>
+         {{/if}}
+         <span class="delete"{{action 'delete' this}}>删除</span>
        </div>
     </li>
   {{/each}}
