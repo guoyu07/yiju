@@ -1,0 +1,12 @@
+<div class="preview">
+  {{#if isDisable}}
+    <img src="{{previewUrl}}" class="preview-pic"/>
+    <button {{action 'uploadPhoto'}} class="upload">上传</button>
+    <button {{action 'cancelPreview'}} class="cancel">取消</button>
+    {{#if uploadDone}}
+      <div class="upload-done">上传成功!</div>
+    {{/if}}
+  {{else}}
+    请上传合集大图 拖动到此
+  {{/if}}
+</div>

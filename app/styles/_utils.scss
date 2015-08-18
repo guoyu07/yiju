@@ -121,9 +121,58 @@ $thickness:  2px;
   }
 
 }
+@mixin dnd-style {
+  .uploader {
+    width: 300px;
+    height: 200px;
+    margin: 0 auto 20px;
+    .preview {
+      line-height: 200px;
+      height: 200px;
+      text-align: center;
+      color: #ccc;
+      font-size:  $large-font-size ;
+      overflow: hidden;
+      position: relative;
+      .preview-pic {
+        height: 150px;
+      }
+      button {
+        position: absolute;
+        bottom: 10px;
+        height: 30px;
+        width: 130px;
+        line-height: 30px;
+        font-size: .7em;
+      }
+      .upload {
+        left: 0;
+      }
+      .cancel {
+        left: 160px;
+        background: $newred;
+      }
+      .upload-done {
+        position: absolute;
+        width: 300px;
+        height: 200px;
+        left: 0;
+        top: 0;
+        background: rgba(0, 0, 0, .8);
+      }
+    }
+  }
+  .dragover {
+    border: 3px dotted #ccc;
+  }
+  .dragoff {
+    border: 3px dotted #efefef;
+  }
+}
 @mixin form-style($height, $col) {
   @include span-columns($col);
   @include shift( (12 - $col) / 2);
+  @include dnd-style;
   .input-holder {
     position: relative;
   }
@@ -136,6 +185,7 @@ $thickness:  2px;
     left: 12px;
     @include error-text;
   }
+
   .mutil-holder {
     position: relative;
     button {

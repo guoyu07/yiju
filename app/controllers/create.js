@@ -6,7 +6,9 @@ export default Ember.Controller.extend(EmberValidations, {
 
   songs: [],
   songIds: [],
+  sendIds: [],
   loading: false,
+  previewUrl: '',
   getSong: function(songUrl, userid) {
 
     return Promise.resolve(Ember.$.getJSON(songUrl))
@@ -55,22 +57,14 @@ export default Ember.Controller.extend(EmberValidations, {
         this.set('loading', false);
         this.songs.pushObject(data);
         this.songIds.push(data.sid);
+        this.sendIds.push(data._id);
       }.bind(this), function(data) {
         this.set('songid', '');
         this.set('loading', false);
         alert(data.message);
       }.bind(this));
 
-      /*Ember.$.getJSON(songUrl).then(function (data) {
-        this.set('songid', '');
-        this.set('loading', false);
-        if (data.pass) {
-          songs.pushObject(data);
-          songIds.push(data.sid);
-        } else {
-          alert(data.message);
-        }
-      }.bind(this));*/
+
     },
     createAlbum: function(userid) {
 
@@ -78,7 +72,7 @@ export default Ember.Controller.extend(EmberValidations, {
         title: this.title,
         desc: this.desc,
         date: new Date(),
-        songs: this.get('songIds'),
+        songs: this.get('sendIds'),
         _creator: userid
       }
 

@@ -10,7 +10,7 @@ module.exports = function(environment) {
         list: 'list',
         song: 'song/',
         add: 'songs',
-        create: 'create',
+        create: 'collections',
         fav: 'fav',
         delete: 'delete/',
         connect: 'connect/',

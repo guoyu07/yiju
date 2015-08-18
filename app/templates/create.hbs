@@ -15,7 +15,8 @@
                       placeholder='enter your collection desc'
                       errors=errors.desc}}
 
-    {{file-uploader}}
+    {{file-uploader uploadData=uploadData}}
+
     <div class="mutil-holder">
     {{validate-input value=songid
                      type='text'

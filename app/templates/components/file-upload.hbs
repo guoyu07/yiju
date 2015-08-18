@@ -1,1 +1,8 @@
-{{yield}}
+{{input type='file' action='uploadPhoto' on='change'}}
+<div class="preview">
+  {{#if previewUrl}}
+  <img src="http://localhost:5000{{previewUrl}}">
+  {{else}}
+  还未上传合集图片
+  {{/if}}
+</div>
