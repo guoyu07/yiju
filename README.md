@@ -4,11 +4,12 @@ This README outlines the details of collaborating on this Ember application.
 A short introduction of this app could easily go here.
 ## TODO
 * styling (in-progress)
-* create collection by user, collections contains several songs (in-progress)
+* create collection by user, collections contains several songs (done)
 * user level
-* post collection desc using markdown
-* post collection pic using upload plugin and do some resize works
-* new html5 player plugin development and styling
+* new collection route and page
+* post collection desc using markdown (don't quite sure if we need this)
+* post collection pic using upload plugin and do some resize works (done using gm)
+* new html5 player plugin development and styling (in progress)
 * lyric fetching and format (http://lyrics.wikia.com/api.php?artist=muse&song=dead_inside&fmt=json done)
 * album pic resizing and save to local (param=130y130 done)
 * detail page share using wechat https://github.com/soldair/node-qrcode
