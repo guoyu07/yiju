@@ -1,0 +1,15 @@
+<div>
+  {{#if loadingPlayer}}
+  Loading...
+  {{else}}
+  {{currentSong}}  {{currentTime}}/{{songDuration}}
+  <button {{action 'togglePlay'}}>{{playText}}</button>
+  <button {{action 'toggleMute'}}>{{muteText}}</button>
+  <div id="progressBar" {{action 'updateProgress' target=view}}><span id="progress"></span></div>
+  {{/if}}
+</div>
+{{#each item in songs}}
+  {{#link-to 'song' item.sid}} {{item.title}} by {{item.artist}} {{/link-to}}
+  <button {{action 'loadSong' item}}>Play</button>
+  <br/>
+{{/each}}

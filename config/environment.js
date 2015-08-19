@@ -7,7 +7,7 @@ module.exports = function(environment) {
     baseURL: '/',
     locationType: 'auto',
     apiUrls: {
-        list: 'list',
+        list: 'songs/',
         song: 'song/',
         add: 'songs',
         create: 'collections',

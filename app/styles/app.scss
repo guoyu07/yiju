@@ -56,4 +56,7 @@ body {
   .songlist {
     @include song-list;
   }
+  .player {
+    @include player-style;
+  }
 }

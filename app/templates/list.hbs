@@ -1,4 +1,6 @@
 <section id="container">
+  {{music-player songs=songList}}
+  <br/><br/><br/>
   {{audio-holder songs=songList deleteSong="deleteSong" favSong="favSong"}}
   {{#if session.isAuthenticated}}
   Hi,{{session.username}}

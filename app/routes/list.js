@@ -23,6 +23,5 @@ export default Ember.Route.extend({
 			outlet: 'main',
 			into: 'application'
 		});
-
 	}
 });

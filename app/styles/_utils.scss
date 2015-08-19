@@ -169,6 +169,19 @@ $thickness:  2px;
     border: 3px dotted #efefef;
   }
 }
+@mixin player-style {
+  #progressBar {
+    border:1px solid #aaa;
+    color:#fff;
+    width:500px;
+    height:20px;
+  }
+  #progress {
+     background-color:#ff0000; // red
+     height:20px;
+     display:inline-block;
+  }
+}
 @mixin form-style($height, $col) {
   @include span-columns($col);
   @include shift( (12 - $col) / 2);
