@@ -1,15 +1,15 @@
-<div>
+<div id="audiokit">
   {{#if loadingPlayer}}
   Loading...
   {{else}}
-  {{currentSong}}  {{currentTime}}/{{songDuration}}
+  {{currentSong}}  {{fixedTime}}/{{fixedDuration}}
   <button {{action 'togglePlay'}}>{{playText}}</button>
   <button {{action 'toggleMute'}}>{{muteText}}</button>
-  <div id="progressBar" {{action 'updateProgress' target=view}}><span id="progress"></span></div>
+  <div id="progressBar"><span id="progress"></span></div>
   {{/if}}
 </div>
-{{#each item in songs}}
+{{#each songs as |item index|}}
   {{#link-to 'song' item.sid}} {{item.title}} by {{item.artist}} {{/link-to}}
-  <button {{action 'loadSong' item}}>Play</button>
+  <button {{action 'loadSong' item index}}>Play {{index}}</button>
   <br/>
 {{/each}}
