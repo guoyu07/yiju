@@ -170,17 +170,79 @@ $thickness:  2px;
   }
 }
 @mixin player-style {
-  #progressBar {
-    border:1px solid #aaa;
-    color:#fff;
-    width:500px;
-    height:20px;
+  #audiokit {
+    height: 60px;
+    position: fixed;
+    background: rgba(0, 0, 0, .9);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: #fff;
   }
-  #progress {
-     background-color:#ff0000; // red
-     height:20px;
-     display:inline-block;
+  .player-left>* {
+    display: inline-block;
   }
+  .player-left {
+    @include span-columns(4);
+    img {
+      width: 60px;
+      height: 60px;
+    }
+    .player-info {
+      vertical-align: top;
+      padding: 16px 0 0 15px;
+      width: 45%;
+      span {
+        display: block;
+        @include ellipsis();
+      }
+      .song-artist {
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+    .player-controls {
+      height: 60px;
+      vertical-align: top;
+      padding: 15px 0 0 20px;
+      span {
+        display: inline-block;
+        width: 40px;
+        margin-right: 10px;
+        i {
+          cursor: pointer;
+        }
+      }
+      #heart {
+        color: #c63d2d;
+      }
+    }
+  }
+  .player-right {
+    @include span-columns(8);
+    height: 60px;
+    position: relative;
+    >div {
+      display: inline-block;
+    }
+    #progressBar {
+      cursor: pointer;
+      color:#fff;
+      width:100%;
+      height:100%;
+      background: #1f2325;
+    }
+    #progress {
+      background-color: #0098CC;
+      height:100%;
+      display:inline-block;
+    }
+    .player-time {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+  }
+
 }
 @mixin form-style($height, $col) {
   @include span-columns($col);

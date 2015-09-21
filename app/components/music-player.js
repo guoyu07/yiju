@@ -21,7 +21,7 @@ export default Ember.Component.extend({
 
   audioPlayer: null,
 
-  currentSong: '',
+  currentSong: null,
 
   playStatus: false,
 
@@ -35,26 +35,8 @@ export default Ember.Component.extend({
 
   currentSongIndex: 0,
 
-  totalSongs: Ember.computed('songs@each', function() {
+  totalSongs: Ember.computed('songs.[]', function() {
       return this.get('songs').length;
-  }),
-
-  playText: Ember.computed('playStatus', function() {
-    var status = this.get('playStatus');
-    if (status) {
-      return 'Pause';
-    } else {
-      return 'Play';
-    }
-  }),
-
-  muteText: Ember.computed('songIsMuted', function() {
-    var muted = this.get('songIsMuted');
-    if (muted) {
-      return 'Unmute';
-    } else {
-      return 'Mute';
-    }
   }),
 
   fixedDuration: Ember.computed('songDuration', function() {
@@ -69,7 +51,7 @@ export default Ember.Component.extend({
 
   playSong: function(song, index) {
     var player = this.get('audioPlayer');
-    this.set('currentSong', song.title);
+    this.set('currentSong', song);
     this.set('currentSongIndex', index);
     player.src = song.url;
     player.load();
@@ -88,6 +70,7 @@ export default Ember.Component.extend({
         player.pause();
       }
     },
+
     toggleMute: function() {
       var player = this.get('audioPlayer');
       this.toggleProperty('songIsMuted');
@@ -98,15 +81,20 @@ export default Ember.Component.extend({
         player.muted = false;
       }
     },
+
     loadSong: function(song, index) {
       this.playSong(song, index);
+    },
+
+    favSong: function(song, userid) {
+      this.sendAction('favSong', song, userid);
     }
   },
 
   setupPlayer: function() {
     //init the player when the component finished
     var defaultTrack = this.get('songs.firstObject');
-    this.set('currentSong', defaultTrack.title);
+    this.set('currentSong', defaultTrack);
     this.set('audioPlayer', new Audio(defaultTrack.url));
     var player = this.get('audioPlayer');
 

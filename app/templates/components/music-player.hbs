@@ -1,15 +1,50 @@
 <div id="audiokit">
   {{#if loadingPlayer}}
-  Loading...
+    Loading...
   {{else}}
-  {{currentSong}}  {{fixedTime}}/{{fixedDuration}}
-  <button {{action 'togglePlay'}}>{{playText}}</button>
-  <button {{action 'toggleMute'}}>{{muteText}}</button>
-  <div id="progressBar"><span id="progress"></span></div>
+    <div class="player-left">
+      <img src="{{currentSong.pic}}?param=60y60" alt="{{currentSong.title}}"/>
+      <div class="player-info">
+        <span class="song-title">{{currentSong.title}}</span>
+        <span class="song-artist">{{currentSong.artist}}</span>
+      </div>
+      <div class="player-controls">
+        <span {{action 'togglePlay'}}>
+          {{#if playStatus}}
+            {{fa-icon 'pause' size=2}}
+          {{else}}
+            {{fa-icon 'play' size=2}}
+          {{/if}}
+        </span>
+        <span {{action 'toggleMute'}}>
+          {{#if songIsMuted}}
+            {{fa-icon 'volume-off' size=2}}
+          {{else}}
+            {{fa-icon 'volume-up' size=2}}
+          {{/if}}
+        </span>
+        {{#if session.isAuthenticated}}
+          <span {{action "favSong" currentSong session.secure.data._id }} id="heart">
+            {{#if currentSong.isStared}}
+              {{fa-icon 'heart' size=2}}
+            {{else}}
+              {{fa-icon 'heart-o' size=2}}
+            {{/if}}
+          </span>
+        {{/if}}
+    </div>
+  </div>
+  <div class="player-right">
+    <div id="progressBar"><span id="progress"></span></div>
+    <div class="player-time">{{fixedTime}}/{{fixedDuration}}</div>
+  </div>
   {{/if}}
 </div>
+<ul class="audiolist">
 {{#each songs as |item index|}}
-  {{#link-to 'song' item.sid}} {{item.title}} by {{item.artist}} {{/link-to}}
-  <button {{action 'loadSong' item index}}>Play {{index}}</button>
-  <br/>
+  <li>
+    {{#link-to 'song' item.sid}} {{item.title}} by {{item.artist}} {{/link-to}}
+    <button {{action 'loadSong' item index}}>Play {{index}}</button> {{item.isStared}}
+  </li>
 {{/each}}
+</ul>
