@@ -1,9 +1,11 @@
 import Ember from 'ember';
 import config from 'Yiju/config/environment';
-import LoginControllerMixin from 'simple-auth/mixins/login-controller-mixin';
+//import LoginControllerMixin from 'simple-auth/mixins/login-controller-mixin';
 import EmberValidations from 'ember-validations';
 
-export default Ember.Controller.extend(LoginControllerMixin, EmberValidations,{
+var apis = config.apiUrls;
+
+export default Ember.Controller.extend(EmberValidations,{
   validations: {
     identification: {
       presence: true
@@ -23,7 +25,7 @@ export default Ember.Controller.extend(LoginControllerMixin, EmberValidations,{
       var valid = _this.get('isValid');
       if (valid) {
         var credentials = this.getProperties('identification', 'password');
-        this.get('session').authenticate('authenticator:custom', credentials).then(
+        /*this.get('session').authenticate('authenticator:custom', credentials).then(
         function() {
           var username = _this.get('session.secure.data.name');
           _this.get('session').set('username', username);
@@ -33,7 +35,26 @@ export default Ember.Controller.extend(LoginControllerMixin, EmberValidations,{
           _this.set('errorMessage', message.msg);
           _this.set('identification', '');
           _this.set('password', '');
-        });
+        });*/
+        Ember.RSVP.resolve(
+          Ember.$.ajax({
+            type: "POST",
+            url: apis.login,
+            data: JSON.stringify({
+              username: credentials.identification,
+              password: credentials.password
+            })
+          })
+        ).then(function(data) {
+          _this.session.set('token', data.token);
+          _this.session.set('username', data.data.name);
+          _this.transitionTo('list');
+          console.log(data);
+        }, function(error) {
+          _this.set('errorMessage', error.msg);
+          _this.set('identification', '');
+          _this.set('password', '');
+        })
       }
     }
   }

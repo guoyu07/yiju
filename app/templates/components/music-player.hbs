@@ -43,8 +43,16 @@
 <ul class="audiolist">
 {{#each songs as |item index|}}
   <li>
-    {{#link-to 'song' item.sid}} {{item.title}} by {{item.artist}} {{/link-to}}
-    <button {{action 'loadSong' item index}}>Play {{index}}</button> {{item.isStared}}
+    <div class="song-pic"><img src="{{item.pic}}?param=80y80"></div>
+    <div class="song-info">
+    {{#link-to 'song' item.sid}}
+      <span class="song-title">{{item.title}}</span>
+      <span class="song-artist">by {{item.artist}}</span>
+    {{/link-to}}
+    </div>
+    <div class="song-control">
+      <button {{action 'loadSong' item index}}>{{fa-icon 'play' size=2}}</button>
+    </div>
   </li>
 {{/each}}
 </ul>

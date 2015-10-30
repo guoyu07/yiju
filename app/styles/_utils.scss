@@ -76,6 +76,30 @@ $thickness:  2px;
     background: #efefef;
   }
 }
+@mixin audio-list {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 100px;
+  li {
+    padding: 10px;
+    margin-bottom: 10px;
+    &:hover {
+      background: $lightback;
+    }
+    >div {
+      display: inline-block;
+    }
+    img {
+      border-radius: 80px;
+    }
+    .song-info {
+      span {
+        display: block;
+      }
+    }
+    @include transition(all 0.2s ease-in);
+  }
+}
 @mixin song-list {
   list-style-type: none;
   padding: 0;

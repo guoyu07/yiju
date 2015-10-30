@@ -6,7 +6,24 @@ var apis = config.apiUrls;
 export default Ember.Route.extend({
   model: function (params) {
     var userUrl = apis.user;
-    return Ember.$.getJSON(userUrl + params.username);
+    var token = this.session.get('token');
+    if (token) {
+      return Ember.RSVP.resolve(
+        Ember.$.ajax({
+          url: userUrl + params.username,
+          headers: {'Authorization': 'Token token=' + token}
+        })
+      );
+
+    } else {
+      this.transitionTo('list');
+    }
+  },
+  events: {
+    error: function(error, transition) {
+      console.error(error);
+      this.transitionTo('list');
+    }
   },
   setupController: function(controller, model) {
       var pubSongs = model.pubSongs;
