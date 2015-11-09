@@ -10,7 +10,7 @@ body {
     width: 100%;
     height: 300px;
     color: $white;
-    background: url(https://dn-yuehu.qbox.me/cover/wander-about/upReJo4qj5HExGUj.jpg/cover);
+    background: url(/imgs/header.jpg);
     #header-inner {
       @include outer-container;
       width: 100%;
@@ -20,8 +20,12 @@ body {
       .unit {
         display: table-cell;
         vertical-align: middle;
+        a {
+          text-decoration: none;
+        }
         h2 {
           font-size: $larger-font-size;
+          color: #fff;
         }
         .login {
           @include subtle($newgreen);
@@ -56,7 +60,20 @@ body {
   .songlist {
     @include song-list;
   }
+  .intro {
+    @include span-columns(8);
+    @include shift(2);
+    @include intro-style;
+  }
+  .song-detail {
+    @include span-columns(8);
+    @include shift(2);
+    @include intro-style;
+    margin-bottom: 50px;
+  }
   .player {
+    @include span-columns(8);
+    @include shift(2);
     @include player-style;
   }
   .audiolist {

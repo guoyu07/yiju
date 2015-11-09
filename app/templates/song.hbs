@@ -1,7 +1,15 @@
-<h1> songs you have ordered now </h1>
-<br/>
-<img src="{{song.pic}}?param=130y130">
-<br/>
-{{subTitle}} by {{song.artist}}
+<section id="container">
+  <div class="song-detail">
+    <div class="avatar">
+      <img src="{{song.pic}}?param=130y130">
+    </div>
+    <div class="song-content">
+      <h2>{{song.title}}</h2>
+      <h3>{{song.artist}}</h3>
+    </div>
+    <p>
+      {{{decodeLyrics}}}
+    </p>
 
-{{{decodeLyrics}}}
+  </div>
+</section>

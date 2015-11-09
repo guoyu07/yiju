@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
 	alt: false,
 	currentPathChange: function () {
 		var currentPath = this.get("currentPath");
-		var altPath = ['login', 'create', 'signup'];
+		var altPath = ['login', 'create', 'signup', 'song'];
 		var alt = null;
 		if (altPath.indexOf(currentPath) != -1) {
 			alt = true;

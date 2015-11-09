@@ -11,24 +11,24 @@
       <div class="player-controls">
         <span {{action 'togglePlay'}}>
           {{#if playStatus}}
-            {{fa-icon 'pause' size=2}}
+            {{fa-icon icon='pause' size='2'}}
           {{else}}
-            {{fa-icon 'play' size=2}}
+            {{fa-icon icon='play' size='2'}}
           {{/if}}
         </span>
         <span {{action 'toggleMute'}}>
           {{#if songIsMuted}}
-            {{fa-icon 'volume-off' size=2}}
+            {{fa-icon icon='volume-off' size='2'}}
           {{else}}
-            {{fa-icon 'volume-up' size=2}}
+            {{fa-icon icon='volume-up' size='2'}}
           {{/if}}
         </span>
         {{#if session.isAuthenticated}}
           <span {{action "favSong" currentSong session.secure.data._id }} id="heart">
             {{#if currentSong.isStared}}
-              {{fa-icon 'heart' size=2}}
+              {{fa-icon icon='heart' size='2'}}
             {{else}}
-              {{fa-icon 'heart-o' size=2}}
+              {{fa-icon icon='heart-o' size='2'}}
             {{/if}}
           </span>
         {{/if}}
@@ -43,15 +43,17 @@
 <ul class="audiolist">
 {{#each songs as |item index|}}
   <li>
-    <div class="song-pic"><img src="{{item.pic}}?param=80y80"></div>
+    <div class="song-pic"><img src="{{item.pic}}?param=60y60"></div>
     <div class="song-info">
     {{#link-to 'song' item.sid}}
-      <span class="song-title">{{item.title}}</span>
-      <span class="song-artist">by {{item.artist}}</span>
+      <h3 class="song-title">{{item.title}}</h3>
+      <span class="song-artist">{{item.artist}}</span>
     {{/link-to}}
     </div>
     <div class="song-control">
-      <button {{action 'loadSong' item index}}>{{fa-icon 'play' size=2}}</button>
+      <a {{action 'loadSong' item index}} class="play">{{fa-icon icon='play'}}</a>
+      <a class="heart">{{fa-icon icon='heart-o' }}</a>
+      {{#link-to 'song' item.sid class='file' target="_blank"}} {{fa-icon icon='file-o'}} {{/link-to}}
     </div>
   </li>
 {{/each}}

@@ -17,6 +17,42 @@
     background: lighten($color, 4%);
   }
 }
+@mixin intro-style {
+  h2 {
+    font-family: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 31px;
+    line-height: 1.12;
+    letter-spacing: -0.022em;
+  }
+  h3 {
+    color: $gray;
+  }
+  p {
+    //font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+    letter-spacing: .01rem;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 21px;
+    line-height: 1.58;
+    letter-spacing: -0.003em;
+  }
+  .avatar {
+    margin: 20px;
+    padding-top: 35px;
+    img {
+      width: 130px;
+      height: 130px;
+      border-radius: 130px;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  .song-content {
+    text-align: center;
+  }
+}
 @mixin larger-btn($height) {
   @include subtle($newgreen);
   width: 100%;
@@ -81,20 +117,57 @@ $thickness:  2px;
   padding: 0;
   margin-bottom: 100px;
   li {
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 20px;
+    border-bottom: 1px solid $lightback;
     &:hover {
       background: $lightback;
+      .song-title {
+        color: $blue !important;
+      }
     }
     >div {
       display: inline-block;
+      vertical-align: middle;
     }
     img {
-      border-radius: 80px;
+      width: 60px;
+      height: 60px;
+      border-radius: 60px;
     }
     .song-info {
+      padding-left: 20px;
+      a {
+        text-decoration: none;
+      }
+      .song-title {
+        font-size: 16px;
+        color: rgba(0,0,0,0.8);
+        line-height: 1.1;
+        margin-bottom: 4px;
+        margin-top: 10px;
+      }
+      .song-artist {
+        color: $gray;
+      }
       span {
         display: block;
+      }
+    }
+    .song-control {
+      float: right;
+      margin-top: 25px;
+      margin-right: 20px;
+      a {
+        display: inline-block;
+        cursor: pointer;
+        margin-right: 15px;
+        font-size: 22px;
+      }
+      .heart {
+        color: $heart;
+      }
+      .file {
+        color: #000;
       }
     }
     @include transition(all 0.2s ease-in);
