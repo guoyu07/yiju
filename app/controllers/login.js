@@ -47,6 +47,7 @@ export default Ember.Controller.extend(EmberValidations,{
         ).then(function(data) {
           _this.session.set('token', data.token);
           _this.session.set('username', data.data.name);
+          _this.session.set('userid', data.data._id);
           _this.transitionTo('list');
           console.log(data);
         }, function(error) {

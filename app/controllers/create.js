@@ -50,7 +50,7 @@ export default Ember.Controller.extend(EmberValidations, {
         return;
       }
       this.set('loading', true);
-      var userid = this.get('session.secure.data')._id;
+      var userid = this.session.get('userid');
       this.getSong(songUrl, userid).then(this.postSong)
       .then(function(data) {
         this.set('songid', '');

@@ -54,6 +54,9 @@ body {
   .login-form {
     @include form-style(44px, 4);
   }
+  .signup-form {
+    @include form-style(44px, 4);
+  }
   .create-form {
     @include form-style(35px, 6);
   }

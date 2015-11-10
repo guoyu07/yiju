@@ -15,7 +15,7 @@ module.exports = function(environment) {
         delete: 'delete/',
         connect: 'connect/',
         user: 'user/',
-        adduser: 'adduser',
+        adduser: 'users',
         login: 'login',
         logout: 'logout',
         check: 'checkuser/'

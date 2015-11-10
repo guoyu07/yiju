@@ -93,6 +93,9 @@ export default Ember.Component.extend({
 
   setupPlayer: function() {
     //init the player when the component finished
+    if (this.get('songs.length') === 0) {
+      return;
+    }
     var defaultTrack = this.get('songs.firstObject');
     this.set('currentSong', defaultTrack);
     this.set('audioPlayer', new Audio(defaultTrack.url));
