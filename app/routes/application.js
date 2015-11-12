@@ -1,7 +1,23 @@
 //import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
 import Ember from 'ember';
 import config from '../config/environment';
+import {getCookie} from 'Yiju/utils/cookie';
 export default Ember.Route.extend({
+  restoreLogin : Ember.on('init', function() {
+    var cookies = getCookie(document.cookie);
+    console.log(cookies);
+    //find sessionid in cookie, send it to the server to verify
+    if (cookies.cid) {
+      Ember.RSVP.resolve(Ember.$.ajax({
+          url: config.apiUrls.restore,
+          method: 'GET'
+      })).then(function(data) {
+
+      }).catch(function(error) {
+
+      });
+    }
+  }),
   actions: {
     logOut: function() {
       var _this = this;

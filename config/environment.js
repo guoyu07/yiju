@@ -18,7 +18,8 @@ module.exports = function(environment) {
         adduser: 'users',
         login: 'login',
         logout: 'logout',
-        check: 'checkuser/'
+        check: 'checkuser/',
+        restore: 'restore/'
     },
     EmberENV: {
       FEATURES: {
