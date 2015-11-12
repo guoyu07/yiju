@@ -8,7 +8,6 @@ export function getCookie() {
     arr.forEach(function(item) {
       if (item.charAt(0) === ' ') {
         item = item.substring(1, item.length);
-        debugger;
       }
       if (item.length > 0 && item.indexOf('=') != '') {
         var pair = item.split('=');

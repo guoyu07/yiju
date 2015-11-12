@@ -8,7 +8,25 @@ export default Ember.Controller.extend(EmberValidations, {
   songIds: [],
   sendIds: [],
   loading: false,
+  //toggle markdown preview
+  preview: false,
+  toggleText: Ember.computed('preview', function() {
+    var preview = this.get('preview');
+    if (preview) {
+      return '关闭预览';
+    } else {
+      return '开启预览';
+    }
+  }),
   previewUrl: '',
+  validations: {
+    title: {
+      presence: true
+    },
+    desc: {
+      presence: true
+    }
+  },
   getSong: function(songUrl, userid) {
 
     return Promise.resolve(Ember.$.getJSON(songUrl))
@@ -40,6 +58,9 @@ export default Ember.Controller.extend(EmberValidations, {
     //return Ember.RSVP.resolve()
   },
   actions: {
+    togglePreview: function() {
+      this.tooggleProperty('preview');
+    },
     addSong: function() {
       var songid = this.get('songid');
       var songIds = this.get('songIds');

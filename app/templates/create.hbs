@@ -1,5 +1,5 @@
 <header class="alt-header">
-  <h2> 创建新的专辑 </h2>
+  <h2> 创建新的合辑 </h2>
 </header>
 <section id="container">
   <div class="create-form">
@@ -7,16 +7,19 @@
       {{validate-input value=title
                        type='text'
                        class='input-holder'
-                       placeholder='enter your collection name'
+                       placeholder='请填写专辑名称'
                        errors=errors.title}}
-     {{validate-input value=desc
-                      type='text'
-                      class='input-holder'
-                      placeholder='enter your collection desc'
-                      errors=errors.desc}}
-
+    <div class="input-holder">
+       {{textarea value=desc
+                  placeholder='请填写合辑描述 支持markdown格式'}}
+      <button {{action 'togglePreview'}} {{bind-attr class="preview:topen:tclose"}}>
+        {{toggleText}}
+      </button>
+    </div>
+    {{#if preview}}
+      {{markdown-to-html markdown=desc}}
+    {{/if}}
     {{file-uploader uploadData=uploadData}}
-
     <div class="mutil-holder">
     {{validate-input value=songid
                      type='text'

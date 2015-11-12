@@ -341,6 +341,20 @@ $thickness:  2px;
   }
 
 }
+@mixin md-textarea {
+  height: 150px;
+  width: 100%;
+  padding: 4px 12px;
+  box-sizing: border-box;
+  border-radius: $font-size / 4;
+  outline: none;
+  border: 1px solid #efefef;
+  margin-bottom: 20px;
+  @include transition(all 0.2s ease-in);
+  &:hover {
+    background: #efefef;
+  }
+}
 @mixin form-style($height, $col) {
   @include span-columns($col);
   @include shift( (12 - $col) / 2);
@@ -350,6 +364,15 @@ $thickness:  2px;
   }
   input {
     @include larger-input($height);
+  }
+  textarea {
+    @include md-textarea;
+  }
+  .topen, .tclose {
+    position: absolute;
+    width: 6em;
+    bottom: -3px;
+    right: 0;
   }
   .error {
     position: absolute;

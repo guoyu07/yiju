@@ -23,8 +23,8 @@
             {{fa-icon icon='volume-up' size='2'}}
           {{/if}}
         </span>
-        {{#if session.isAuthenticated}}
-          <span {{action "favSong" currentSong session.secure.data._id }} id="heart">
+        {{#if session.username}}
+          <span {{action "favSong" currentSong session.userid }} id="heart">
             {{#if currentSong.isStared}}
               {{fa-icon icon='heart' size='2'}}
             {{else}}
