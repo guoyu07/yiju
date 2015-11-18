@@ -355,6 +355,52 @@ $thickness:  2px;
     background: #efefef;
   }
 }
+@mixin modal {
+  .modal {
+    &:before {
+      content: "";
+      background: rgba(0,0,0,.6);
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 10;
+    }
+    .modal-dialog {
+      background: #fefefe;
+      border: #efefef solid 1px;
+      border-radius: 5px;
+      margin-left: -250px;
+      position: fixed;
+      left: 50%;
+      top: 20%;
+      z-index: 11;
+      width: 500px;
+      //.translate(0, -500%);
+      //.transition-transform(~"0.3s ease-out");
+    }
+    .modal-header {
+      border-bottom: #ccc solid 1px;
+      padding: 7px 15px;
+      h2 {
+        font-size: 20px;
+        margin: 0;
+      }
+      .btn-close{
+        color: $gray;
+        font-size: 30px;
+        text-decoration: none;
+        position: absolute; right: 5px; top: 0;
+        &:hover{
+           color: darken($gray, 10%);
+        }
+      }
+    }
+    .modal-body{
+      padding: 15px;
+      height: 350px;
+      overflow-x: auto;
+    }
+  }
+}
 @mixin form-style($height, $col) {
   @include span-columns($col);
   @include shift( (12 - $col) / 2);
@@ -373,6 +419,9 @@ $thickness:  2px;
     width: 6em;
     bottom: -3px;
     right: 0;
+  }
+  .preview-markdown {
+    @include modal;
   }
   .error {
     position: absolute;

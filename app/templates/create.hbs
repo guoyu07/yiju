@@ -17,7 +17,19 @@
       </button>
     </div>
     {{#if preview}}
-      {{markdown-to-html markdown=desc}}
+    <div class="preview-markdown">
+      <div class="modal">
+        <div class="modal-dialog">
+          <div class="modal-header">
+            <h2>预览描述</h2>
+            <a href="#close" class="btn-close" aria-hidden="true" {{action 'closePreview'}}>×</a> 
+          </div>
+          <div class="modal-body">
+            {{markdown-to-html markdown=desc}}
+          </div>
+        </div>
+      </div>
+    </div>
     {{/if}}
     {{file-uploader uploadData=uploadData}}
     <div class="mutil-holder">

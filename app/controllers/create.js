@@ -58,8 +58,12 @@ export default Ember.Controller.extend(EmberValidations, {
     //return Ember.RSVP.resolve()
   },
   actions: {
+    closePreview: function() {
+      this.set('preview', false);
+    },
     togglePreview: function() {
-      this.tooggleProperty('preview');
+      var preview = this.get('preview');
+      this.set('preview', !preview);
     },
     addSong: function() {
       var songid = this.get('songid');
