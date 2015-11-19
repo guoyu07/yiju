@@ -10,6 +10,7 @@ export default Ember.Controller.extend(EmberValidations, {
   loading: false,
   //toggle markdown preview
   preview: false,
+  uploadData: '',
   toggleText: Ember.computed('preview', function() {
     var preview = this.get('preview');
     if (preview) {
@@ -92,10 +93,10 @@ export default Ember.Controller.extend(EmberValidations, {
 
     },
     createAlbum: function(userid) {
-
       var postData = {
         title: this.title,
         desc: this.desc,
+        pic: this.get('uploadData').path,
         date: new Date(),
         songs: this.get('sendIds'),
         _creator: userid

@@ -1,0 +1,5 @@
+<ul>
+{{#each model as |collection|}}
+  <li> {{#link-to 'collection' collection._id}} {{collection.title}} --- {{collection.date}} {{/link-to}}</li>
+{{/each}}
+</ul>

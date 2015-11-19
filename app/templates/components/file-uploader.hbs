@@ -1,4 +1,5 @@
 <div class="preview">
+  {{input type="file" id="hidden-input"}}
   {{#if isDisable}}
     <img src="{{previewUrl}}" class="preview-pic"/>
     <button {{action 'uploadPhoto'}} class="upload">上传</button>
@@ -8,5 +9,6 @@
     {{/if}}
   {{else}}
     请上传合集大图 拖动到此
+    <button class="click-upload" {{action "triggerForm"}}>或者点击上传</button>
   {{/if}}
 </div>

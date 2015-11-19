@@ -22,7 +22,7 @@
         <div class="modal-dialog">
           <div class="modal-header">
             <h2>预览描述</h2>
-            <a href="#close" class="btn-close" aria-hidden="true" {{action 'closePreview'}}>×</a> 
+            <a href="#close" class="btn-close" aria-hidden="true" {{action 'closePreview'}}>×</a>
           </div>
           <div class="modal-body">
             {{markdown-to-html markdown=desc}}
@@ -36,19 +36,19 @@
     {{validate-input value=songid
                      type='text'
                      class='input-holder'
-                     placeholder='enter your the song id'
+                     placeholder='填写网易云音乐歌曲ID'
                      errors=errors.songid}}
       <button type="submit" {{action 'addSong'}} {{bind-attr class="loading:loading:normal"}}>
         {{#if loading}}
         <span class="spinner"></span>
         {{else}}
-        Add Song
+        添加歌曲
         {{/if}}
       </button>
     </div>
     {{song-list list = songs ids = songIds}}
     </form>
-    <button type="submit" {{action 'createAlbum' session.secure.data._id}}>Create Album
+    <button type="submit" {{action 'createAlbum' session.userid}}>创建合集
     </button>
   </div>
 </section>

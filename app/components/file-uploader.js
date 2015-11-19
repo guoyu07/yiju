@@ -1,4 +1,5 @@
 import Ember from 'ember';
+
 export default Ember.Component.extend({
   tagName: 'div',
   classNames: 'uploader dropzone',
@@ -7,6 +8,7 @@ export default Ember.Component.extend({
   uploadDone: false,
   classNameBindings: ['isDragging:dragover:dragoff'],
   uploadFile: null,
+  _alreadyBind: false,
   previewUrl: '',
   fileName: '',
   previewPic: function(file) {
@@ -48,7 +50,32 @@ export default Ember.Component.extend({
     }
 
   },
+
+  bindFormEvents: Ember.on('didInsertElement', function() {
+    if (!this.get('_alreadyBind')) {
+      var input = document.getElementById('hidden-input');
+      input.addEventListener('change', function(e) {
+        this.set('_alreadyBind', true);
+        var input = e.target;
+        if (input.files && input.files[0]) {
+          var file = input.files[0];
+          this.set('isDisable', true);
+          this.set('uploadFile', file);
+          //debugger;
+          this.previewPic(file);
+        }
+      }.bind(this), false);
+    }
+
+    /*Ember.$("#hidden-input").on('change', function(event) {
+      var files = $(this).prop('files');
+      console.log(files);
+    }.bind(this));*/
+  }),
   actions: {
+    triggerForm: function() {
+      Ember.$("#hidden-input").trigger('click');
+    },
     uploadPhoto: function() {
       var inputFile = this.get('uploadFile');
       var formData = new FormData();
