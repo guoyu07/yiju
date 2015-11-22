@@ -1,20 +1,20 @@
 <header class="main-header">
-  <section id="header-inner">
-    <div class='unit'>
+  <section id="header-logo" class="clearfix">
+    <div class="site-logo">
       {{#link-to 'list'}}<h2 id="title">一句</h2>{{/link-to}}
-      {{#if session.username}}
-      {{#link-to 'user' session.username}} Hi,{{session.username}}  {{/link-to}}
-      {{#link-to 'create'}}Id: {{session.userid}} Create {{/link-to}}
-      <button {{ action 'logOut' }}>Logout</button>
-      {{else}}
-      <!--<a href="https://www.douban.com/service/auth2/auth?client_id=063b27283fc657df12b17578bf53079d&redirect_uri=http://localhost:4200/connect&response_type=code">
-        login with douban
-      </a>
-      or-->
-      {{#link-to 'login' class='login'}} Login {{/link-to}}
-      or
-      {{#link-to 'signup' class='signup'}} Signup {{/link-to}}
-      {{/if}}
+    </div>
+    <div class="site-menu">
+      <ul>
+        {{#if session.username}}
+        <li>{{#link-to 'user' session.username}} 你好 {{session.username}}  {{/link-to}}</li>
+        <li>{{#link-to 'create'}} 新建合辑 {{/link-to}}</li>
+        <li><a href="#" {{ action 'logOut' }}>登出</a></li>
+        {{else}}
+        <li>{{#link-to 'login' class='login'}} 登录 {{/link-to}}</li>
+        <li>{{#link-to 'signup' class='signup'}} 注册 {{/link-to}}</li>
+        {{/if}}
+        <li>{{#link-to 'signup' class='signup'}} 关于 {{/link-to}}</li>
+      </ul>
     </div>
   </section>
 </header>

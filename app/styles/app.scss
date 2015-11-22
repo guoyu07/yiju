@@ -8,31 +8,63 @@
 body {
   .main-header {
     width: 100%;
-    height: 300px;
-    color: $white;
-    background: url(/imgs/header.jpg);
-    #header-inner {
-      @include outer-container;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      display: table;
-      .unit {
-        display: table-cell;
-        vertical-align: middle;
-        a {
-          text-decoration: none;
-        }
+    position: fixed;
+    #header-logo {
+      padding: 15px 50px;
+      @include clearfix;
+      a {
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+      }
+      .site-logo {
+        float:left;
         h2 {
           font-size: $larger-font-size;
-          color: #fff;
         }
-        .login {
-          @include subtle($newgreen);
+      }
+      .site-menu {
+        float: right;
+        ul li {
+          list-style-type: none;
+          display: inline-block;
+          padding: 15px 10px;
+          @include transition(all 0.5s ease-in);
+          a {
+            font-size: 1.1em;
+          }
+          a:hover {
+            color: rgba(255, 255, 255, 1);
+          }
         }
-        .signup {
-          @include subtle($blue);
-        }
+      }
+    }
+  }
+  .header-wrapper {
+    width: 100%;
+    height: 400px;
+    color: $white;
+    background: url(/imgs/header.jpg);
+  }
+  #header-inner {
+    @include outer-container;
+    text-align: center;
+    display: table;
+    height: 100%;
+    .unit {
+      display: table-cell;
+      vertical-align: middle;
+      a {
+        text-decoration: none;
+      }
+      h2 {
+        font-size: $larger-font-size;
+        color: #fff;
+      }
+      .login {
+        @include subtle($newgreen);
+      }
+      .signup {
+        @include subtle($blue);
       }
     }
   }

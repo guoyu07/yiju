@@ -96,7 +96,8 @@ export default Ember.Controller.extend(EmberValidations, {
       var postData = {
         title: this.title,
         desc: this.desc,
-        pic: this.get('uploadData').path,
+        thumb: this.get('uploadData').thumbs,
+        fullsize: this.get('uploadData').fullsize,
         date: new Date(),
         songs: this.get('sendIds'),
         _creator: userid

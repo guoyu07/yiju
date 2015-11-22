@@ -1,5 +1,13 @@
-{{model.title}}
-
-{{model.desc}}
-
-{{music-player songs=model.songs favSong="favSong"}}
+<section class="header-wrapper" style="background: url(http://localhost:5000{{model.fullsize}})">
+  <div id="header-inner">
+    <div class='unit'>
+      {{#link-to 'list'}}<h2 id="title">{{model.title}}</h2>{{/link-to}}
+    </div>
+  </div>
+</section>
+<section id="container">
+  <div class="intro">
+    <p>{{model.desc}}</p>
+  </div>
+  {{music-player songs=model.songs favSong="favSong"}}
+</section>

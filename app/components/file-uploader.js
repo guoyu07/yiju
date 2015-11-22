@@ -90,6 +90,7 @@ export default Ember.Component.extend({
           this.set('uploadData', data);
           console.log(xhr.responseText);
         } else {
+          alert('上传失败');
           console.error(xhr.responseText);
         }
       }.bind(this);
