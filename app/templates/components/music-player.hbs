@@ -42,7 +42,7 @@
 </div>
 <ul class="audiolist">
 {{#each songs as |item index|}}
-  <li>
+  <li {{bind-attr class="item.active:active item.isPlaying:playing"}}>
     <div class="song-pic"><img src="{{item.pic}}?param=60y60"></div>
     <div class="song-info">
     {{#link-to 'song' item.sid}}
@@ -51,7 +51,15 @@
     {{/link-to}}
     </div>
     <div class="song-control">
-      <a {{action 'loadSong' item index}} class="play">{{fa-icon icon='play'}}</a>
+
+      <a {{action 'loadSong' item index}} class="play">
+        {{#if item.isPlaying}}
+        {{fa-icon icon='pause'}}
+        {{else}}
+        {{fa-icon icon='play'}}
+        {{/if}}
+      </a>
+
       <a class="heart">{{fa-icon icon='heart-o' }}</a>
       {{#link-to 'song' item.sid class='file' target="_blank"}} {{fa-icon icon='file-o'}} {{/link-to}}
     </div>

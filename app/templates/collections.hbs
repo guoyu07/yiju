@@ -1,5 +1,26 @@
-<ul>
-{{#each model as |collection|}}
-  <li> {{#link-to 'collection' collection._id}} {{collection.title}} --- {{collection.date}} {{/link-to}}</li>
-{{/each}}
-</ul>
+<section class="header-wrapper alter-header">
+  <div id="header-inner">
+    <div class='unit'>
+      {{#link-to 'list'}}<h2 id="title">所有合辑</h2>{{/link-to}}
+    </div>
+  </div>
+</section>
+
+<section id="container">
+  <ul class="collection-list">
+  {{#each model as |collection|}}
+    <li>
+      <div class="img-holder">
+        {{#link-to 'collection' collection._id}}
+          <img src="http://localhost:5000{{collection.thumb}}" alt="{{collection.title}}">
+        {{/link-to}}
+      </div>
+      <div class="collection-info">
+        <h3>{{collection.title}}</h3>
+        <p>{{collection._creator.name}}发表于<br/>
+        {{collection.date}} </p>
+      </div>
+    </li>
+  {{/each}}
+  </ul>
+</section>

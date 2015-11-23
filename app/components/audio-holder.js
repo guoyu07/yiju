@@ -42,20 +42,6 @@ export default Ember.Component.extend({
 		return index++;
 	},
 
-	/*lowerSongs: function() {
-		var songs = this.get('songs');
-		var arr = songs.filter(function(song) {
-			if (song.title.length > 14) {
-				song.longSong = true;
-			}
-			return song;
-		});
-		return arr;
-	}.property('songs.@each'),
-	totalSongs: function() {
-		return this.songs.length;
-	}.property('songs.@each'),*/
-
 	totalSongs: Ember.computed('songs.@each', function() {
 		return this.songs.length;
 	}),

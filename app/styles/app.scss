@@ -8,9 +8,11 @@
 body {
   .main-header {
     width: 100%;
-    position: fixed;
+    position: absolute;
+    top: 0;
+    left: 0;
     #header-logo {
-      padding: 15px 50px;
+      padding: 0 50px;
       @include clearfix;
       a {
         color: rgba(255, 255, 255, 0.9);
@@ -43,7 +45,13 @@ body {
     width: 100%;
     height: 400px;
     color: $white;
-    background: url(/imgs/header.jpg);
+    background-image: url(/imgs/header.jpg);
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;
+  }
+  .alter-header {
+    background-image: url(/imgs/back2.jpg);
   }
   #header-inner {
     @include outer-container;
@@ -59,6 +67,7 @@ body {
       h2 {
         font-size: $larger-font-size;
         color: #fff;
+        font-weight: normal;
       }
       .login {
         @include subtle($newgreen);
@@ -94,6 +103,11 @@ body {
   }
   .songlist {
     @include song-list;
+  }
+  .collection-list {
+    margin-top: 30px;
+    list-style-type: none;
+    @include collection-list;
   }
   .intro {
     @include span-columns(8);

@@ -49,8 +49,23 @@ export default Ember.Component.extend({
     return fixFormat(time);
   }),
 
+  clearAllActive: function() {
+      var songs = this.get('songs');
+      songs.forEach(function(song) {
+        Ember.set(song, 'active', false);
+        Ember.set(song, 'isPlaying', false);
+      });
+  },
+
   playSong: function(song, index) {
     var player = this.get('audioPlayer');
+
+    //when playing a song, first clear all the active and playing state
+    this.clearAllActive();
+    //set this song active status, and playing status
+    Ember.set(song, 'active', true);
+    Ember.set(song, 'isPlaying', true);
+
     this.set('currentSong', song);
     this.set('currentSongIndex', index);
     player.src = song.url;
@@ -83,7 +98,13 @@ export default Ember.Component.extend({
     },
 
     loadSong: function(song, index) {
-      this.playSong(song, index);
+      var player = this.get('audioPlayer');
+      var isPlaying = song.isPlaying;
+      if (isPlaying) {
+        Ember.set(song, 'isPlaying', false);
+      } else {
+        this.playSong(song, index);
+      }
     },
 
     favSong: function(song, userid) {
@@ -99,6 +120,7 @@ export default Ember.Component.extend({
     var defaultTrack = this.get('songs.firstObject');
     this.set('currentSong', defaultTrack);
     this.set('audioPlayer', new Audio(defaultTrack.url));
+    Ember.set(defaultTrack, 'active', true);
     var player = this.get('audioPlayer');
 
     //loading finished, can play
