@@ -1,24 +1,27 @@
 <section class="header-wrapper alter-header">
   <div id="header-inner">
     <div class='unit'>
-      {{#link-to 'list'}}<h2 id="title">所有合辑</h2>{{/link-to}}
+      {{#link-to 'collections'}}<h2 id="title">所有合辑</h2>{{/link-to}}
     </div>
   </div>
 </section>
 
-<section id="container">
+<section id="container" class="no-background">
   <ul class="collection-list">
   {{#each model as |collection|}}
     <li>
+      {{#link-to 'collection' collection._id}}
+        <h3>{{collection.title}}</h3>
+      {{/link-to}}
       <div class="img-holder">
         {{#link-to 'collection' collection._id}}
           <img src="http://localhost:5000{{collection.thumb}}" alt="{{collection.title}}">
         {{/link-to}}
       </div>
       <div class="collection-info">
-        <h3>{{collection.title}}</h3>
-        <p>{{collection._creator.name}}发表于<br/>
-        {{collection.date}} </p>
+
+        {{fa-icon icon='user'}}  {{collection._creator.name}} <br/>
+        {{fa-icon icon='clock-o'}}  {{collection.date}}
       </div>
     </li>
   {{/each}}

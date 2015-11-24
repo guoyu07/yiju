@@ -122,16 +122,24 @@ $thickness:  2px;
 }
 @mixin collection-list {
   li {
-    @include span-columns(3);
-    @include omega(4n);
-    background: #fefefe;
+    @include span-columns(4);
+    @include omega(3n);
+    background: #fff;
     border-radius: 4px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
+    a {
+      color: $blue;
+      text-decoration: none;
+      h3 {
+        padding: 0 20px;
+        font-weight: normal;
+        line-height: 25px;
+        height: 25px;
+      }
+    }
     .img-holder {
       overflow: hidden;
-      border-top-left-radius: 4px;
-      border-top-right-radius: 4px;
       img {
         width: 100%;
         @include transition(all 0.3s ease-in);
@@ -141,20 +149,12 @@ $thickness:  2px;
       }
     }
     .collection-info {
-      padding: 10px;
-      h3 {
-        margin: 3px 0 8px 0;
-        text-align: center;
-        color: $blue;
-        font-weight: normal;
-        line-height: 20px;
-        height: 20px;
-      }
-      p {
-        margin: 5px 0;
-        line-height: 22px;
-        letter-spacing: 0.5px;
-      }
+      color: #999;
+      padding: 15px 20px;
+      background: #f9f9f9;
+      line-height: 22px;
+      letter-spacing: 0.5px;
+      font-size: .8em;
     }
   }
 }

@@ -6,6 +6,7 @@
         'utils',
         'global';
 body {
+  background: #f1f1f1;
   .main-header {
     width: 100%;
     position: absolute;
@@ -91,6 +92,11 @@ body {
   }
   #container {
     @include outer-container;
+    background: #fff;
+    padding: 50px 0;
+  }
+  .no-background {
+    background: none !important;
   }
   .login-form {
     @include form-style(44px, 4);
