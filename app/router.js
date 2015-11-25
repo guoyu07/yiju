@@ -11,7 +11,12 @@ export default Router.map(function() {
   this.route('collections');
   this.route('collection', {path: '/collection/:id'});
   this.route('user', {path: '/user/:username'});
-  this.route('create');
+  //this.route('create');
+  this.route('admin', function() {
+    this.route('create');
+    this.route('edit');
+    this.route('modify', {path: '/:cid'});
+  });
 	this.route('connect');
   this.resource('login');
   this.resource('signup');

@@ -6,14 +6,16 @@ export default Ember.Controller.extend({
 	alt: false,
 	currentPathChange: function () {
 		var currentPath = this.get("currentPath");
-		var altPath = ['login', 'create', 'signup', 'song'];
-		var alt = null;
-		if (altPath.indexOf(currentPath) != -1) {
-			alt = true;
-		} else {
-			alt = false;
+		if (currentPath) {
+			currentPath = currentPath.split('.')[0];
+			var altPath = ['login', 'create', 'signup', 'song', 'admin'];
+			var alt = null;
+			if (altPath.indexOf(currentPath) != -1) {
+				alt = true;
+			} else {
+				alt = false;
+			}
+			this.set("alt", alt);
 		}
-		//var alt = currentPath ? currentPath.indexOf("login") === 0 : false;
-		this.set("alt", alt);
 	}.observes('currentPath').on("init")
 });

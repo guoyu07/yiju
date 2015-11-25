@@ -120,6 +120,37 @@ $thickness:  2px;
     background: #efefef;
   }
 }
+@mixin dropdown-list {
+  @include transition(all 0.2s ease-in);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  top: 40px;
+  left: -30px;
+  width: 120px;
+  padding: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  .no-bottom {
+    a {
+      border-bottom-width: 0;
+    }
+  }
+  li {
+    list-style-type: none;
+    a {
+      display: block;
+      font-size: 0.9em;
+      line-height: 40px;
+      height: 40px;
+      padding: 0 14px;
+      color: #666;
+      border-bottom: 1px solid #ccc;
+      &:hover {
+        color: $blue;
+      }
+    }
+  }
+}
 @mixin collection-list {
   li {
     @include span-columns(4);
@@ -243,6 +274,8 @@ $thickness:  2px;
     img {
       float: left;
       margin-right: 1em;
+      height: 60px;
+      width: 60px;
     }
     .info {
       width: 18em;

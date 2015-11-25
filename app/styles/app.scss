@@ -27,7 +27,7 @@ body {
       }
       .site-menu {
         float: right;
-        ul li {
+        >ul>li {
           list-style-type: none;
           display: inline-block;
           padding: 15px 10px;
@@ -37,6 +37,12 @@ body {
           }
           a:hover {
             color: rgba(255, 255, 255, 1);
+          }
+        }
+        .sub-fa {
+          position: relative;
+          .submenu {
+            @include dropdown-list;
           }
         }
       }
@@ -53,6 +59,12 @@ body {
   }
   .alter-header {
     background-image: url(/imgs/back2.jpg);
+  }
+  #global-loader {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    color: $blue;
   }
   #header-inner {
     @include outer-container;

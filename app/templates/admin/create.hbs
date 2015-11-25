@@ -1,0 +1,48 @@
+
+<form>
+  {{validate-input value=title
+                   type='text'
+                   class='input-holder'
+                   placeholder='请填写专辑名称'
+                   errors=errors.title}}
+<div class="input-holder">
+   {{textarea value=desc
+              placeholder='请填写合辑描述 支持markdown格式'}}
+  <button {{action 'togglePreview'}} {{bind-attr class="preview:topen:tclose"}}>
+    {{toggleText}}
+  </button>
+</div>
+{{#if preview}}
+<div class="preview-markdown">
+  <div class="modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2>预览描述</h2>
+        <a href="#close" class="btn-close" aria-hidden="true" {{action 'closePreview'}}>×</a>
+      </div>
+      <div class="modal-body">
+        {{markdown-to-html markdown=desc}}
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}
+{{file-uploader uploadData=uploadData}}
+<div class="mutil-holder">
+{{validate-input value=songid
+                 type='text'
+                 class='input-holder'
+                 placeholder='填写网易云音乐歌曲ID'
+                 errors=errors.songid}}
+  <button type="submit" {{action 'addSong'}} {{bind-attr class="loading:loading:normal"}}>
+    {{#if loading}}
+    <span class="spinner"></span>
+    {{else}}
+    添加歌曲
+    {{/if}}
+  </button>
+</div>
+{{song-list list = songs ids = songIds}}
+</form>
+<button type="submit" {{action 'createAlbum' session.userid}}>创建合集
+</button>

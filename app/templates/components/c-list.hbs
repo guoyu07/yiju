@@ -1,0 +1,16 @@
+<ul class="songlist">
+  {{#if isNotEmpty}}
+  {{#each list as |collection|}}
+    <li>
+      <img src="http://localhost:5000{{collection.thumb}}" alt="{{collection.title}}">
+       <div class="info">{{collection.title}} by {{collection._creator.name}}</div>
+       <div class="oprate">
+         <span class="exsit extend" {{action 'edit' collection}}>编辑</span>
+         <span class="delete"{{action 'delete' collection}}>删除</span>
+       </div>
+    </li>
+  {{/each}}
+  {{else}}
+    <h3>No collection yet</h3>
+  {{/if}}
+</ul>

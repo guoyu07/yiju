@@ -7,7 +7,13 @@
       <ul>
         {{#if session.username}}
         <li>{{#link-to 'user' session.username}} 你好 {{session.username}}  {{/link-to}}</li>
-        <li>{{#link-to 'create'}} 新建合辑 {{/link-to}}</li>
+        <li class="sub-fa"> <a href="javascript:void()">管理</a>
+          <ul class="submenu">
+            <li> {{#link-to 'admin.create'}}新建合辑 {{/link-to}}</li>
+            <li>{{#link-to 'admin.edit'}}管理合辑{{/link-to}}</li>
+            <li class="no-bottom">{{#link-to 'admin.edit'}}管理合辑{{/link-to}}</li>
+          </ul>
+        </li>
         <li><a href="#" {{ action 'logOut' }}>登出</a></li>
         {{else}}
         <li>{{#link-to 'login' class='login'}} 登录 {{/link-to}}</li>
