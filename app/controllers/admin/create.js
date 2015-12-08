@@ -8,6 +8,7 @@ export default Ember.Controller.extend(EmberValidations, {
   songIds: [],
   sendIds: [],
   loading: false,
+  source: null,
   //toggle markdown preview
   preview: false,
   uploadData: '',
@@ -58,6 +59,15 @@ export default Ember.Controller.extend(EmberValidations, {
 
     //return Ember.RSVP.resolve()
   },
+  openSSE: function() {
+    var source = this.get('source');
+    source = new EventSource(config.apiUrls.progress);
+    source.onmessage = function (event) {
+      // a message without a type was fired
+      console.log(event);
+    };
+  }.on('init'),
+
   actions: {
     closePreview: function() {
       this.set('preview', false);

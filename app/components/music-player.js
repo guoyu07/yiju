@@ -27,6 +27,8 @@ export default Ember.Component.extend({
 
   loadingPlayer: true,
 
+  loadingError: false,
+
   songDuration: 0,
 
   currentTime: 0,
@@ -59,17 +61,22 @@ export default Ember.Component.extend({
 
   playSong: function(song, index) {
     var player = this.get('audioPlayer');
-
     //when playing a song, first clear all the active and playing state
     this.clearAllActive();
     //set this song active status, and playing status
     Ember.set(song, 'active', true);
     Ember.set(song, 'isPlaying', true);
 
+    //set current song and current index
     this.set('currentSong', song);
     this.set('currentSongIndex', index);
+
+    //load the src and play the song
     player.src = song.url;
     player.load();
+    //set the loading status to true
+    this.set('loadingError', false);
+    this.set('loadingPlayer', true);
     this.set('playStatus', true);
     player.play();
   },
@@ -77,11 +84,16 @@ export default Ember.Component.extend({
   actions: {
     togglePlay: function() {
       var player = this.get('audioPlayer');
+      var currentSong = this.get('currentSong');
+
       this.toggleProperty('playStatus');
       var status = this.get('playStatus');
       if (status) {
+        //watch the playlist
+        Ember.set(currentSong, 'isPlaying', true);
         player.play();
       } else {
+        Ember.set(currentSong, 'isPlaying', false);
         player.pause();
       }
     },
@@ -100,10 +112,22 @@ export default Ember.Component.extend({
     loadSong: function(song, index) {
       var player = this.get('audioPlayer');
       var isPlaying = song.isPlaying;
+      var currentSongIndex = this.get('currentSongIndex');
       if (isPlaying) {
+        //pause the song, let the player pasue the song too
         Ember.set(song, 'isPlaying', false);
+        this.set('playStatus', false);
+        player.pause();
       } else {
-        this.playSong(song, index);
+        //check if it is the same song
+        //the same song here, replay it
+        if (currentSongIndex === index) {
+          Ember.set(song, 'isPlaying', true);
+          this.set('playStatus', true);
+          player.play();
+        } else {
+          this.playSong(song, index);
+        }
       }
     },
 
@@ -133,6 +157,12 @@ export default Ember.Component.extend({
       this.set('songDuration', player.duration);
     }.bind(this), false);
 
+    //loading audio error
+    player.addEventListener('error', function(error) {
+      console.log(error);
+      this.set('loadingPlayer', false);
+        this.set('loadingError', true);
+    }.bind(this), false);
     //audio time updated, set progress bar
     player.addEventListener('timeupdate', function() {
       var progress = this.$().find('#progress');

@@ -1,7 +1,16 @@
 <div id="audiokit">
   {{#if loadingPlayer}}
-    Loading...
+    <div class="loading-player">
+      {{fa-icon icon="spinner" spin=true size=2 pulse=true}}
+      <div class="status-text">加载音乐中</div>
+    </div>
   {{else}}
+    {{#if loadingError}}
+    <div class="error-player">
+      {{fa-icon icon="remove" size=2}}
+      <div class="status-text">加载失败</div>
+    </div>
+    {{else}}
     <div class="player-left">
       <img src="{{currentSong.pic}}?param=60y60" alt="{{currentSong.title}}"/>
       <div class="player-info">
@@ -38,6 +47,7 @@
     <div id="progressBar"><span id="progress"></span></div>
     <div class="player-time">{{fixedTime}}/{{fixedDuration}}</div>
   </div>
+  {{/if}}
   {{/if}}
 </div>
 <ul class="audiolist">

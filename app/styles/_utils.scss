@@ -193,6 +193,9 @@ $thickness:  2px;
   list-style-type: none;
   padding: 0;
   margin-bottom: 100px;
+  .loading-player {
+    text-align: center;
+  }
   li {
     padding: 20px;
     border-bottom: 1px solid $lightback;
@@ -377,6 +380,18 @@ $thickness:  2px;
   }
   .player-left>* {
     display: inline-block;
+  }
+  .status-text {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 6px;
+  }
+  .loading-player, .error-player{
+    text-align: center;
+    margin-top: 10px;
+  }
+  .error-player {
+    color: $newred;
   }
   .player-left {
     @include span-columns(4);

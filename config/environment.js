@@ -9,6 +9,7 @@ module.exports = function(environment) {
     apiUrls: {
         list: 'songs/',
         song: 'song/',
+        progress: 'sse',
         collection: 'collection/',
         add: 'songs',
         create: 'collections',
