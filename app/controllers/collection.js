@@ -4,11 +4,11 @@ function htmlspecialchars_decode(str) {
 }
 export default Ember.Controller.extend({
   decodeDesc: function() {
-		var desc = this.get('model.desc');
+		var desc = this.get('model.htmlDesc');
 		if (desc) {
 			return htmlspecialchars_decode(desc);
 		} else {
 			return '';
 		}
-	}.property('model.desc')
+	}.property('model.htmlDesc')
 });

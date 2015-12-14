@@ -1,0 +1,13 @@
+{{#if enable}}
+  <div class="modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2>{{title}}</h2>
+        <a href="#close" class="btn-close" aria-hidden="true" {{action 'close'}}>×</a>
+      </div>
+      <div class="modal-body {{extraName}}">
+        {{yield}}
+      </div>
+    </div>
+  </div>
+{{/if}}

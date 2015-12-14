@@ -15,7 +15,7 @@ export default Router.map(function() {
   this.route('admin', function() {
     this.route('create');
     this.route('edit');
-    this.route('modify', {path: '/:cid'});
+    this.route('modify', {path: '/:id'});
   });
 	this.route('connect');
   this.resource('login');

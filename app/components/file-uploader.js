@@ -5,6 +5,8 @@ export default Ember.Component.extend({
   classNames: 'uploader dropzone',
   isDragging: false,
   isDisable: false,
+  uploadProgress: false,
+  uploadPercent: 0,
   uploadDone: false,
   classNameBindings: ['isDragging:dragover:dragoff'],
   uploadFile: null,
@@ -78,17 +80,34 @@ export default Ember.Component.extend({
     },
     uploadPhoto: function() {
       var inputFile = this.get('uploadFile');
+      //begin upload
+      this.set('uploadProgress', true);
       var formData = new FormData();
       formData.append('photo', inputFile);
       //fuck jquery ajax...
       var xhr = new XMLHttpRequest();
       xhr.open('POST', '/upload', true);
+      xhr.upload.onprogress = function(e) {
+        if (e.lengthComputable) {
+          var percent = (e.loaded / e.total) * 100;
+          this.set('uploadPercent', percent);
+        }
+      }.bind(this)
       xhr.onload = function() {
         if (xhr.status === 200) {
           var data = JSON.parse(xhr.responseText);
+          //upload done
           this.set('uploadDone', true);
+          //reset uploading
+          this.set('uploadProgress', false);
           this.set('uploadData', data);
-          console.log(xhr.responseText);
+          var uploadedUrl = 'http://localhost:5000' + data.thumbs
+          this.set('uploadUrl', uploadedUrl);
+          Ember.run.later(function() {
+            //after 2 secs, reset to the start page
+            this.set('uploadDone', false);
+            this.set('isDisable', false);
+          }.bind(this), 1500);
         } else {
           alert('上传失败');
           console.error(xhr.responseText);

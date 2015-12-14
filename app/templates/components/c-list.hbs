@@ -5,7 +5,7 @@
       <img src="http://localhost:5000{{collection.thumb}}" alt="{{collection.title}}">
        <div class="info">{{collection.title}} by {{collection._creator.name}}</div>
        <div class="oprate">
-         <span class="exsit extend" {{action 'edit' collection}}>编辑</span>
+         {{#link-to 'admin.modify' collection._id}}<span class="exsit extend">编辑</span>{{/link-to}}
          <span class="delete"{{action 'delete' collection}}>删除</span>
        </div>
     </li>

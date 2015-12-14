@@ -1,15 +1,16 @@
 import Ember from 'ember';
-import EmberValidations from 'ember-validations';
 import config from 'Yiju/config/environment';
 
-export default Ember.Controller.extend(EmberValidations, {
+export default Ember.Controller.extend({
   enable: false,
+
   actions: {
-    createAlbum: function(postData) {
-      var createUrl =  config.apiUrls.create;
+    updateAlbum: function(postData) {
+      var _id = this.get('cid');
+      var oprateUrl  = config.apiUrls.collection;
       Ember.RSVP.resolve(Ember.$.ajax({
-        url: createUrl,
-        method: 'POST',
+        url: oprateUrl + _id,
+        method: 'PUT',
         data: JSON.stringify(postData)
       })).then(function(data) {
         this.set('enable', true);
@@ -22,4 +23,4 @@ export default Ember.Controller.extend(EmberValidations, {
       });
     }
   }
-});
+})

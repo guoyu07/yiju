@@ -1,0 +1,7 @@
+<h2>编辑合辑 -- {{model.title}}</h2>
+
+{{admin-panel collection=model mode='edit' createCallback='updateAlbum'}}
+
+{{#simple-modal title='更新成功' enable = enable extra=false}}
+两秒后进入编辑列表页
+{{/simple-modal}}

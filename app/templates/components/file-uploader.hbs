@@ -4,11 +4,24 @@
     <img src="{{previewUrl}}" class="preview-pic"/>
     <button {{action 'uploadPhoto'}} class="upload">上传</button>
     <button {{action 'cancelPreview'}} class="cancel">取消</button>
+    {{#if uploadProgress}}
+      <div class="upload-done">
+        {{fa-icon icon="spinner" spin=true size=2 pulse=true}}上传中...
+        上传进度 {{uploadPercent}}%
+      </div>
+    {{/if}}
     {{#if uploadDone}}
       <div class="upload-done">上传成功!</div>
     {{/if}}
   {{else}}
-    请上传合集大图 拖动到此
+    请上传大图 拖动到此
     <button class="click-upload" {{action "triggerForm"}}>或者点击上传</button>
+  {{/if}}
+</div>
+<div class="uploaded">
+  {{#if uploadUrl}}
+    <img src="{{uploadUrl}}" class="preview-pic"/>
+  {{else}}
+    还没有上传图片
   {{/if}}
 </div>
