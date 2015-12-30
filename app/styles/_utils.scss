@@ -541,6 +541,9 @@ $thickness:  2px;
   @include span-columns($col);
   @include shift( (12 - $col) / 2);
   @include dnd-style;
+  h2 {
+    text-align: center;
+  }
   .input-holder {
     position: relative;
   }

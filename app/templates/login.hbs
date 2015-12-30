@@ -1,18 +1,19 @@
 <header class="alt-header">
-  <h2>  登录 </h2>
+
 </header>
-<section id="container">
+<section id="container" class="na-container">
   <div class="login-form">
+    <h2>  登录 </h2>
     <form {{action 'authenticate' on='submit'}}>
     {{validate-input value=identification
                      type='text'
                      class='input-holder'
-                     placeholder='enter your username'
+                     placeholder='请填写用户名'
                      errors=errors.identification}}
     {{validate-input value=password
                      type='password'
                      class='input-holder'
-                     placeholder='enter your password'
+                     placeholder='请填写密码'
                      errors=errors.password}}
 
     <button type="submit">登录</button>

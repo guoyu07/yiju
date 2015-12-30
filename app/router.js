@@ -15,6 +15,7 @@ export default Router.map(function() {
   this.route('admin', function() {
     this.route('create');
     this.route('edit');
+    this.route('user');
     this.route('modify', {path: '/:id'});
   });
 	this.route('connect');

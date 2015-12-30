@@ -1,0 +1,22 @@
+<h3>用户管理</h3>
+<ul class="songlist">
+{{#each model as |user|}}
+<li>
+  <img src="{{user.avatarUrl}}" alt="{{user.name}}">
+  <div class="info">{{user.name}}({{user.avatar}})
+
+  </div>
+  <div class="oprate">
+    <span class="extend exsit" {{action 'promote' user}}>
+      管理员
+      {{#if user.admin}}
+      {{fa-icon icon='check-square'}}
+      {{else}}
+      {{fa-icon icon='square'}}
+      {{/if}}
+    </span>
+    <span class="delete"{{action 'delete' user}}>删除</span>
+  </div>
+</li>
+{{/each}}
+</ul>

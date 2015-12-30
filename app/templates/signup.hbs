@@ -1,34 +1,35 @@
 <header class="alt-header">
-  <h2>  注册 </h2>
+
 </header>
-<section id="container">
+<section id="container" class="na-container">
   <div class="signup-form">
+    <h2>  注册 </h2>
     <form {{action 'signup' on='submit'}}>
       {{validate-input value=username
                        type='text'
                        class='input-holder'
-                       placeholder='enter your username'
+                       placeholder='请填写用户名'
                        errors=errors.username}}
       {{validate-input value=password
                        type='password'
                        class='input-holder'
-                       placeholder='enter your password'
+                       placeholder='请输入您的密码'
                        errors=errors.password}}
       {{validate-input value=repassword
                       type='password'
                       class='input-holder'
-                      placeholder='enter your password again'
+                      placeholder='请再次输入您的密码'
                       errors=errors.repassword}}
       {{validate-input value=avatar
                       type='text'
                       class='input-holder'
-                      placeholder='enter your email address'
+                      placeholder='请输入您的Email地址'
                       errors=errors.avatar}}
 
       <button type="submit">注册</button>
     </form>
+    {{#if message}}
+      {{message}}
+    {{/if}}
   </div>
 </section>
-{{#if message}}
-  {{message}}
-{{/if}}

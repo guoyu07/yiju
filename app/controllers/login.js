@@ -8,33 +8,26 @@ var apis = config.apiUrls;
 export default Ember.Controller.extend(EmberValidations,{
   validations: {
     identification: {
-      presence: true
+      presence: {message: '用户名不能为空'},
+      format: {with: /[a-z|A-Z|_]/, message: '只允许英文字母或者下划线'}
     },
     password: {
-      presence: true,
-      length: { minimum: 6 }
+      presence: {message: '密码不能为空'},
+      length: { minimum: 6, messages: {tooShort: '密码要大于六位'}}
     }
+  },
+  showErrors: function() {
+    this.get('errors.identification').set('show', true);
+    this.get('errors.password').set('show', true);
   },
   //authenticator: 'authenticator:custom',
   actions: {
     // display an error when authentication fails
     authenticate: function() {
-
       var _this = this;
       var valid = _this.get('isValid');
       if (valid) {
         var credentials = this.getProperties('identification', 'password');
-        /*this.get('session').authenticate('authenticator:custom', credentials).then(
-        function() {
-          var username = _this.get('session.secure.data.name');
-          _this.get('session').set('username', username);
-          //debugger;
-        }, function(message) {
-          // but the reject callback works fine, the message is the right one
-          _this.set('errorMessage', message.msg);
-          _this.set('identification', '');
-          _this.set('password', '');
-        });*/
         Ember.RSVP.resolve(
           Ember.$.ajax({
             type: "POST",
@@ -50,11 +43,15 @@ export default Ember.Controller.extend(EmberValidations,{
           _this.session.set('userid', data.data._id);
           _this.transitionTo('list');
           console.log(data);
-        }, function(error) {
-          _this.set('errorMessage', error.msg);
+        }).catch(function(error) {
+          _this.set('errorMessage', '登录失败 请填写正确的用户名和密码');
+          console.log(_this.get('errorMessage'));
           _this.set('identification', '');
           _this.set('password', '');
-        })
+          debugger;
+        });
+      } else {
+        this.showErrors();
       }
     }
   }

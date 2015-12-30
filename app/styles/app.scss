@@ -16,6 +16,7 @@ body {
     #header-logo {
       padding: 0 50px;
       @include clearfix;
+      background-image: linear-gradient(to bottom,rgba(0,0,0,0.3) 0,transparent 100%);
       a {
         color: rgba(255, 255, 255, 0.9);
         text-decoration: none;
@@ -108,17 +109,42 @@ body {
     background: #fff;
     padding: 50px 0;
   }
+  .na-container {
+    width: 40em;
+    border-radius: 5px;
+  }
   .no-background {
     background: none !important;
   }
   .login-form {
-    @include form-style(44px, 4);
+    @include form-style(44px, 6);
   }
   .signup-form {
-    @include form-style(44px, 4);
+    @include form-style(44px, 6);
   }
   .create-form {
     @include form-style(35px, 6);
+    .admin-links {
+      padding: 0;
+      padding-bottom: 30px;
+      border-bottom: 2px dotted #efefef;
+      li {
+        display: inline-block;
+        margin-right: 20px;
+        a {
+          color: $blue;
+          text-decoration: none;
+          padding: 10px;
+          border: 1px solid #efefef;
+          border-radius: 5px;
+        }
+        .active {
+          color: #fff;
+          border: 1px solid $blue;
+          background: $blue;
+        }
+      }
+    }
   }
   .songlist {
     @include song-list;

@@ -1,11 +1,12 @@
 <header class="alt-header">
-  <h2> 管理 </h2>
+  <h2> 管理首页 </h2>
 </header>
 <section id="container">
   <div class="create-form">
-    <ul>
+    <ul class="admin-links">
       <li>{{#link-to 'admin.edit'}}管理所有合辑{{/link-to}}</li>
       <li>{{#link-to 'admin.create'}}新建合辑{{/link-to}}</li>
+      <li>{{#link-to 'admin.user'}}用户管理{{/link-to}}</li>
     </ul>
     {{outlet}}
   </div>

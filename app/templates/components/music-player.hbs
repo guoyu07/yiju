@@ -33,8 +33,8 @@
           {{/if}}
         </span>
         {{#if session.username}}
-          <span {{action "favSong" currentSong session.userid }} id="heart">
-            {{#if currentSong.isStared}}
+          <span {{action 'favSong' currentSong userid}} id="heart">
+            {{#if currentSong.hearted}}
               {{fa-icon icon='heart' size='2'}}
             {{else}}
               {{fa-icon icon='heart-o' size='2'}}
@@ -70,8 +70,12 @@
         {{fa-icon icon='play'}}
         {{/if}}
       </a>
+      {{#if item.hearted}}
+      <a class="heart" {{action 'favSong' item userid}}>{{fa-icon icon='heart'}}</a>
+      {{else}}
+      <a class="heart" {{action 'favSong' item userid}}>{{fa-icon icon='heart-o'}}</a>
+      {{/if}}
 
-      <a class="heart">{{fa-icon icon='heart-o' }}</a>
       {{#link-to 'song' item.sid class='file' target="_blank"}} {{fa-icon icon='file-o'}} {{/link-to}}
     </div>
   </li>
