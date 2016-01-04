@@ -7,6 +7,19 @@
 </section>
 <section id="container">
   <div class="intro">
+    <div class="article-header">
+      <img src="{{model._creator.avatarUrl}}" alt="{{model._creator.name}}"/>
+      {{model._creator.name}} 发表于 {{publishTime}}
+      <div class="link-zone">
+        收藏该专辑 <span class="fav" {{action 'favAlbum' model session.userid isHearted}}>
+          {{#if isHearted}}
+          {{fa-icon icon='heart'}}
+          {{else}}
+          {{fa-icon icon='heart-o'}}
+          {{/if}}
+        </span>
+      </div>
+    </div>
     <p>{{{decodeDesc}}}</p>
   </div>
   {{music-player songs=model.songs favSong="favSong" userid=session.userid}}
